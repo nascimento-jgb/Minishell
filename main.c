@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 13:53:34 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:54:37 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(void)
 {
 	printf("Hello World\n");
 	printf("This print comes from the test branch\n");
+	printf("wharever");
 	return (0);
 }
 
