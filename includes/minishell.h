@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 10:58:58 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:19:51 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,12 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+
+//get arguments
+// static char	**get_multiple_arg(int argc, char **argv);
+// static char	**get_one_arg(char **argv);
+// char		**get_input(int argc, char **argv);
 
 #endif

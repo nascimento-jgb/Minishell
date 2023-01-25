@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 10:56:19 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:27:33 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,42 @@ int	fork_create(void)
 	pid = fork();
 	if (pid < 0)
 		exit_message("Fork error.\n");
-	else
-		return (pid);
+	return (pid);
+}
+
+char	*get_cmd_line(char *line)
+{
+	if (line)
+	{
+		free(line);
+		line = (char *)NULL;
+	}
+	line = readline("$ ");
 }
 
 int	main(int argc, char **argv)
 {
-	char	**array;
-	int	fd;
+	// char	**array;
+	// // int	fd;
+	static char *line_read;
 
-	if (argc < 2)
-		error_message("invalid input.\n");
-	else
-		array = get_input(argc, argv);
-	while ((fd = open("console", O_RDWR)) >= 0)
-	{
-		if (fd >=3)
-		{
-			close(fd);
-			break ;
-		}
-	}
+	(void)argc;
+	(void)argv;
+	line_read = (char *)NULL;
+	// if (argc < 2)
+	// 	exit_message("Invalid input.\n");
+	// else
+	// 	array = get_input(argc, argv);
+
+	// while ((fd = open("console", O_RDWR)) >= 0)
+	// {
+	// 	if (fd >=3)
+	// 	{
+	// 		close(fd);
+	// 		break ;
+	// 	}
+	// }
+	line_read = get_cmd_line(line_read);
+	free(line_read);
 	return (0);
 }
