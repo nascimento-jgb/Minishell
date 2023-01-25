@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:54:01 by jonascim          #+#    #+#             */
-/*   Updated: 2023/01/24 15:19:55 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:43:22 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	**get_multiple_arg(int argc, char **argv)
 	i = 0;
 	str = malloc(sizeof(char *) * argc);
 	if (!str)
-		exit_message("Malloc error.\n");
+		exiit_message("Malloc error.\n");
 	while (argv[i + 1])
 	{
 		str[i] = ft_strdup(argv[i + 1]);

@@ -6,17 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 15:27:33 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:45:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
-
-void	exit_message(char *error)
-{
-	ft_putstr_fd(error, 2);
-	exit(1);
-}
 
 int	fork_create(void)
 {

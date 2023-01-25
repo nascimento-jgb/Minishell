@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 15:19:51 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:43:53 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,11 @@
 // static char	**get_multiple_arg(int argc, char **argv);
 // static char	**get_one_arg(char **argv);
 // char		**get_input(int argc, char **argv);
+
+
+void	exit_message(char *error);
+
+
+void	exit_message(char *error);
 
 #endif
