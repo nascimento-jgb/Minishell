@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arguments.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:54:01 by jonascim          #+#    #+#             */
-/*   Updated: 2023/01/24 11:00:41 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:25:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char **get_multiple_arg(int argc, char **argv)
 	i = 0;
 	str = malloc(sizeof(char *) * argc);
 	if (!str)
-		ext_message("Malloc error.\n");
+		exit_message("Malloc error.\n");
 	while (argv[i + 1])
 	{
 		str[i] = ft_strdup(argv[i + 1]);

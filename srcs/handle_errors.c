@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   handle_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/25 15:44:21 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/25 15:44:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../includes/minishell.h"
 
-# include "../libft/libft.h"
-# include <fcntl.h>
-# include <stdio.h>
-
-
-void	exit_message(char *error);
-
-#endif
+void	exit_message(char *error)
+{
+	ft_putstr_fd(error, 2);
+	exit(1);
+}
