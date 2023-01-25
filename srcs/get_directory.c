@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:14:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/25 17:30:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:04:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*get_dir(void)
 	username = ft_strdup(getenv("USER"));
 	if (!username)
 		return (NULL);
-	username = tmp_join(ft_strdup("@"), username);
+	username = tmp_join(ft_strdup("\33[31m@"), username);
 	if (!username)
 		return (NULL);
-	username = tmp_join(username, ft_strdup(":"));
+	username = tmp_join(username, ft_strdup(":\33[0m"));
 	if (!username)
 		return (NULL);
 	dir = (char *)malloc(sizeof(char) * 1024);
