@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:04:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/25 16:56:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:36:17 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	open_shell(void)
 {

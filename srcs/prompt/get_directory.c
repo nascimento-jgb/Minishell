@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:14:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/25 18:04:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:36:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static char	*tmp_join(char *str1, char *str2)
 {
@@ -26,7 +26,7 @@ char	*get_dir(void)
 	char	*username;
 	char	*dir;
 	char	*prompt;
-	
+
 	username = ft_strdup(getenv("USER"));
 	if (!username)
 		return (NULL);

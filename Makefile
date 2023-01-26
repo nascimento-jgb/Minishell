@@ -8,8 +8,10 @@ ft_strnstr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_strrchr.c ft_
 ft_power_of.c get_next_line.c ft_isspace.c ft_abs.c ft_min.c ft_max.c ft_strrev.c ft_isprime.c ft_strdel.c ft_memdel.c
 LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
-SRCS = handle_errors.c open_shell.c get_directory.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS))
+PROMPT = open_shell.c get_directory.c
+PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
+SRCS = handle_errors.c
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST))
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c

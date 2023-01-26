@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/25 18:02:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:35:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 		add_history(a);
-		printf("a: %s\n", a);
+		printf("%s\n", a);
 		ft_strdel(&dir);
 		ft_strdel(&a);
 	}
-	rl_clear_history();
+	//rl_clear_history();
 	return (0);
 }
