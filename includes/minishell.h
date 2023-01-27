@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:24:33 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:46:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <string.h>
+
+
+typedef struct s_bash_vars
+{
+	char	**vars_arr;
+}	t_bash_vars;
 
 void	exit_message(char *error);
 void	open_shell(void);

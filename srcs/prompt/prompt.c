@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:25:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:52:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	prompt(int argc, char **argv, char **env)
 		}
 		add_history(a);
 		printf("%s\n", a);
-		ms_env(env);
 		free(dir);
 		free(a);
 	}
