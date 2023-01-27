@@ -10,7 +10,7 @@ LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
 PROMPT = open_shell.c get_directory.c prompt.c
 PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
-BUILTINS = cd.c pwd.c echo.c
+BUILTINS = cd.c pwd.c echo.c env.c
 BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
 SRCS = handle_errors.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST))

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:08:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:25:10 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 16:10:02 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/27 16:24:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ms_cd(char *path)
+void	ms_env(char **env)
 {
-	if (chdir(path) < 0)
-		ft_printf("cd: %s : %s\n", strerror(errno), path);
+	int	i;
+
+	i = 0;
+	while (env[i])
+	{
+		ft_printf("%s\n", env[i]);
+		i++;
+	}
 }

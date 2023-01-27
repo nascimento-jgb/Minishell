@@ -6,14 +6,17 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:05:16 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:25:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	prompt(void)
+int	prompt(int argc, char **argv, char **env)
 {
+	(void)argc;
+	(void)argv;
+	(void)env;
 	while (1)
 	{
 		char	*a;
@@ -30,6 +33,7 @@ int	prompt(void)
 		}
 		add_history(a);
 		printf("%s\n", a);
+		ms_env(env);
 		free(dir);
 		free(a);
 	}

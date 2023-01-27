@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:49:28 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:24:33 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 void	exit_message(char *error);
 void	open_shell(void);
 char	*get_dir(void);
-int		prompt(void);
-void	change_directory(char *path);
-void	pwd(void);
+int		prompt(int argc, char **argv, char **env);
 void	blt_error_msg(char *cmd, int err, char *path);
-void	echo(char *message, int	flag);
+void	ms_cd(char *path);
+void	ms_pwd(void);
+void	ms_echo(char *message, int	flag);
+void	ms_env(char **env);
+int		ms_exit(int error_code);
 
 #endif

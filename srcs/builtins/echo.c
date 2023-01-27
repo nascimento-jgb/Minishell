@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:40:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:01:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:25:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	remove_spaces(char *message)
 	}
 }
 
-void	echo(char *message, int	flag)
+void	ms_echo(char *message, int	flag)
 {
 	remove_spaces(message);
 	if (!flag)

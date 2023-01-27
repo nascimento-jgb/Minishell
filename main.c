@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 14:59:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:15:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ char	*get_cmd_line(char *line)
 	return (line);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **env)
 {
 	// char	**array;
 	// // int	fd;
 	static char *line_read;
 
-	(void)argc;
-	(void)argv;
 	line_read = (char *)NULL;
 	// if (argc < 2)
 	// 	exit_message("Invalid input.\n");
@@ -59,7 +57,7 @@ int	main(int argc, char **argv)
 	// 	}
 	// }
 	open_shell();
-	prompt();
+	prompt(argc, argv, env);
 	line_read = get_cmd_line(line_read);
 	free(line_read);
 	return (0);
