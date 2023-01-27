@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:14:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 14:05:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:01:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@ static char	*tmp_join(char *str1, char *str2)
 	tmp = ft_strjoin(str1, str2);
 	ft_strdel(&str1);
 	ft_strdel(&str2);
+	return (tmp);
+}
+
+char	*add_color(char *color, char *str)
+{
+	char *tmp;
+
+	tmp = tmp_join(color, str);
+	if (!tmp)
+		return (0);
+	tmp = tmp_join(tmp, ft_strdup(":\33[0m"));
+	if (!tmp)
+		return (0);
 	return (tmp);
 }
 
@@ -42,6 +55,9 @@ static char *filter_dir(char *username)
 	}
 	free(dir);
 	final_dir = tmp_join( ft_strdup("~"), final_dir);
+	if (!final_dir)
+		return (0);
+	final_dir = add_color(ft_strdup("\033[92m"), final_dir);
 	return (final_dir);
 }
 

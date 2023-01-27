@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 14:36:23 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:43:50 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*get_cmd_line(char *line)
 		line = (char *)NULL;
 	}
 	line = readline("$ ");
-	return (line);
 }
 
 int	main(int argc, char **argv)
