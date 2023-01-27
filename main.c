@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/25 17:45:35 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:21:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
+
 
 int	fork_create(void)
 {
@@ -19,7 +20,9 @@ int	fork_create(void)
 	pid = fork();
 	if (pid < 0)
 		exit_message("Fork error.\n");
-	return (pid);
+	else
+		return (pid);
+	return (0);
 }
 
 char	*get_cmd_line(char *line)

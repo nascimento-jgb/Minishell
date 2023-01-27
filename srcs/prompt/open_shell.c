@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   open_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 14:21:47 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/25 16:04:09 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/26 17:36:17 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../../includes/minishell.h"
 
-# include "../libft/libft.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-void	exit_message(char *error);
-void	open_shell(void);
-char	*get_dir(void);
-int		prompt(void);
-
-#endif
+void	open_shell(void)
+{
+	ft_printf("\n\n----------------------------------------------\n\n");
+	ft_printf("\t\tTHis is minishell\t\t\n");
+	ft_printf("\tUse it at your own risk\t\n");
+	ft_printf("\n\n----------------------------------------------\n\n");
+}

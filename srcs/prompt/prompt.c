@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 14:21:47 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/27 11:28:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../../includes/minishell.h"
 
-# include "../libft/libft.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+int	prompt(void)
+{
+	while (1)
+	{
+		char	*a;
+		char	*dir;
 
-void	exit_message(char *error);
-void	open_shell(void);
-char	*get_dir(void);
-int		prompt(void);
-
-#endif
+		dir = get_dir();
+		if (!dir)
+			return (1);
+		a = readline(dir);
+		if (!a)
+		{
+			free(dir);
+			return (1);
+		}
+		add_history(a);
+		printf("%s\n", a);
+		free(dir);
+		free(a);
+	}
+	//rl_clear_history();
+	return (0);
+}
