@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 08:40:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:13:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	exit_message(char *error);
 void	open_shell(void);
 char	*get_dir(void);
 int		prompt(void);
+
 #endif

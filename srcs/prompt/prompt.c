@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 08:41:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:28:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	prompt(void)
 		}
 		add_history(a);
 		printf("%s\n", a);
-		ft_strdel(&dir);
-		ft_strdel(&a);
+		free(dir);
+		free(a);
 	}
 	//rl_clear_history();
 	return (0);
