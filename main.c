@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 14:21:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:24:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	main(int argc, char **argv)
 	// 		break ;
 	// 	}
 	// }
+	open_shell();
+	prompt();
 	line_read = get_cmd_line(line_read);
 	free(line_read);
 	return (0);
