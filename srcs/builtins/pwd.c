@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:36:14 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 15:28:03 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/27 15:39:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	exit_message(char *error)
+void	pwd(void)
 {
-	ft_putstr_fd(error, 2);
-	exit(1);
-}
+	char dir[1024];
 
-void	blt_error_msg(char *cmd, int err, char *path)
-{
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(strerror(err), 2);
-	ft_putstr_fd(" : ", 2);
-	ft_putstr_fd(path, 2);
+	if (!getcwd(dir, 1024))
+	{
+		blt_error_msg("pwd", errno, "pwd");
+		return ;
+	}
+	ft_printf("%s\n", dir);
 }

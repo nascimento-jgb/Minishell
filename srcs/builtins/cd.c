@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:36:14 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 15:08:19 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/27 15:27:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	exit_message(char *error)
+void	change_directory(char *path)
 {
-	ft_putstr_fd(error, 2);
-	exit(1);
-}
-
-void	blt_error_msg(char *cmd, int err, char *path)
-{
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(strerror(err), 2);
-	ft_putstr_fd(" : ", 2);
-	ft_putstr_fd(path, 2);
+	if (chdir(path) < 0)
+		ft_printf("cd: %s : %s\n", strerror(errno), path);
 }

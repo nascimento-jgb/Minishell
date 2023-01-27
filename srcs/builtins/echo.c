@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:36:14 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 15:40:26 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/27 16:01:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	exit_message(char *error)
+static void	remove_spaces(char *message)
 {
-	ft_putstr_fd(error, 2);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (*message)
+	{
+		if (!ft_isspace(*message))
+			ft_putchar(*message);
+		else if (ft_isspace(*message) && !ft_isspace(*(message + 1)))
+			ft_putchar(*message);
+		message++;
+	}
 }
 
-void	blt_error_msg(char *cmd, int err, char *path)
+void	echo(char *message, int	flag)
 {
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(strerror(err), 2);
-	ft_putstr_fd(" : ", 2);
-	ft_putstr_fd(path, 2);
+	remove_spaces(message);
+	if (!flag)
+		ft_putchar('\n');
 }
