@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 14:24:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:59:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	*get_cmd_line(char *line)
 		line = (char *)NULL;
 	}
 	line = readline("$ ");
+	return (line);
 }
 
 int	main(int argc, char **argv)
