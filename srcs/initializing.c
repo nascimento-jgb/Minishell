@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   initializing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:47:38 by jonascim         ###   ########.fr       */
+/*   Created: 2023/01/27 15:47:00 by jonascim          #+#    #+#             */
+/*   Updated: 2023/01/27 15:47:39 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	exit_message(char *error)
+t_command *pipe_command(t_command *left_param, t_command *right_param)
 {
-	ft_putstr_fd(error, 2);
-	exit(1);
+	t_pipecmd *cmd;
+
+	cmd = malloc(sizeof(*cmd));
+	if (!cmd)
+		exit_message("Error.\n"); // doube check if exit can be done at this point of the program
+	memset(cmd, 0, sizeof(*cmd));
+	cmd->type = PIPE;
+	cmd->left = left_param;
+	cmd->right = right_param;
+	return ((struct t_command *)cmd);
 }

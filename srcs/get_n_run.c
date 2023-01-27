@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   get_n_run.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:47:38 by jonascim         ###   ########.fr       */
+/*   Created: 2023/01/27 15:47:14 by jonascim          #+#    #+#             */
+/*   Updated: 2023/01/27 15:47:36 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+// insert here function get command
 
-void	exit_message(char *error)
+int	get_command()
 {
-	ft_putstr_fd(error, 2);
-	exit(1);
+
+}
+
+
+void	run_command(t_command *cmd)
+{
+	t_pipecmd	*pipe_cmd;
+	int					p[2];
+
+	if (cmd == 0)
+		exit();
+	else if (cmd->type == PIPE)
+		run_pipe(pipe_cmd, cmd, p);
+	//else if (other cases)
+	//else for default case
 }
