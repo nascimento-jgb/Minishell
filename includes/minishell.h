@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 21:47:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:48:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ t_env		*env_init(char **env);
 void		clean_minishell(t_minishell *minishell);
 int			ms_export(t_minishell *minishell, char *path);
 int			ms_unset(t_minishell *minishell, char *var);
-int			ms_set(t_minishell *minishell, char *path);
 
 #endif
