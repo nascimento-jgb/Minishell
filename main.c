@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:15:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:13:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,13 @@ char	*get_cmd_line(char *line)
 
 int	main(int argc, char **argv, char **env)
 {
-	// char	**array;
-	// // int	fd;
-	static char *line_read;
-
-	line_read = (char *)NULL;
-	// if (argc < 2)
-	// 	exit_message("Invalid input.\n");
-	// else
-	// 	array = get_input(argc, argv);
-
-	// while ((fd = open("console", O_RDWR)) >= 0)
-	// {
-	// 	if (fd >=3)
-	// 	{
-	// 		close(fd);
-	// 		break ;
-	// 	}
-	// }
+	t_minishell *minishell;
+	
+	minishell = minishell_init(argc, argv, env);
+	if (!minishell)
+		return (1);
 	open_shell();
-	prompt(argc, argv, env);
-	line_read = get_cmd_line(line_read);
-	free(line_read);
+	prompt(minishell);
+	clean_minishell(minishell);
 	return (0);
 }

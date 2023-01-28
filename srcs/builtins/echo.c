@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:40:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:25:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/28 10:14:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static void	remove_spaces(char *message)
 {
-	int	i;
-
-	i = 0;
 	while (*message)
 	{
 		if (!ft_isspace(*message))

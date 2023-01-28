@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   minishell_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 12:13:33 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/28 11:16:50 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/28 11:21:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
-int	prompt(t_minishell *minishell)
+t_minishell	*minishell_init(int argc, char **argv, char **env)
 {
-	while (1)
-	{
-		char	*a;
-		char	*dir;
+	t_minishell *minishell;
 
-		dir = get_dir();
-		if (!dir)
-			return (1);
-		a = readline(dir);
-		if (!a)
-		{
-			free(dir);
-			return (1);
-		}
-		add_history(a);
-		printf("%s\n", a);
-		ms_env(minishell->env->env_list);
-		free(dir);
-		free(a);
-	}
-	//rl_clear_history();
-	return (0);
+	minishell = ft_calloc(1, sizeof(t_minishell));
+	if (!minishell)
+		return (NULL);
+	minishell->argc = argc;
+	minishell->argv = argv;
+	minishell->env = env_init(env);
+	return (minishell);
 }

@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 12:13:33 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/28 11:21:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-int	prompt(t_minishell *minishell)
+typedef struct s_env
 {
-	while (1)
-	{
-		char	*a;
-		char	*dir;
+	t_list	*env_list;
+	int		total_env_vars;
+}	t_env;
 
-		dir = get_dir();
-		if (!dir)
-			return (1);
-		a = readline(dir);
-		if (!a)
-		{
-			free(dir);
-			return (1);
-		}
-		add_history(a);
-		printf("%s\n", a);
-		ms_env(minishell->env->env_list);
-		free(dir);
-		free(a);
-	}
-	//rl_clear_history();
-	return (0);
-}
+typedef struct s_vars
+{
+	t_list	*vars_list;
+	int	total_vars;
+}	t_vars;
+
+typedef struct s_minishell
+{
+	t_env	*env;
+	t_vars	*vars;
+	int		argc;
+	char	**argv;
+}	t_minishell;
+
+#endif

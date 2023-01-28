@@ -6,20 +6,20 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:10:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:24:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/28 11:12:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ms_env(char **env)
+void	ms_env(t_list *env)
 {
-	int	i;
+	t_list *tmp;
 
-	i = 0;
-	while (env[i])
+	tmp = env;
+	while (tmp)
 	{
-		ft_printf("%s\n", env[i]);
-		i++;
+		ft_printf("%s\n", tmp->content);
+		tmp = tmp->next;
 	}
 }

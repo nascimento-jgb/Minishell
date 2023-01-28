@@ -12,16 +12,17 @@ PROMPT = open_shell.c get_directory.c prompt.c
 PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
 BUILTINS = cd.c pwd.c echo.c env.c
 BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
-SRCS = handle_errors.c
+SRCS = handle_errors.c clean.c get_env.c minishell_init.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST))
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c
-	make -C libft
+	@make -C libft
+	@make bonus -C libft
 	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT) -lreadline
 
 clean:
-	rm -f $(LODEST)
+	rm -f $(LODEST) ./libft/*.o ./libft/ft_printf/*.o
 
 fclean:
 	rm -f $(NAME) ./libft/$(LIBFT)
