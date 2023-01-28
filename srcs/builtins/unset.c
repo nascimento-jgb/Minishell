@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 12:42:02 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/28 12:49:18 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/28 13:00:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	prompt(t_minishell *minishell)
+static t_list	*find_var(t_list *list ,char *var)
 {
-	while (1)
-	{
-		char	*a;
-		char	*dir;
+	t_list	*tmp;
 
-		dir = get_dir();
-		if (!dir)
-			return (1);
-		a = readline(dir);
-		if (!a)
-		{
-			free(dir);
-			return (1);
-		}
-		add_history(a);
-		printf("%s\n", a);
-		ms_env(minishell->env->env_list);
-		ms_export(minishell, a);
-		ms_env(minishell->env->env_list);
-		free(dir);
-		free(a);
+	tmp = list;
+	while (tmp)
+	{
+		if (!ft_strncmp(tmp->content, var, ft_strlen(var)))
+			return (tmp);
+		tmp = tmp->next;
 	}
-	//rl_clear_history();
 	return (0);
+}
+
+static void delete(void *mem)
+{
+	free(mem);
+	mem = NULL;
+}
+
+int	unset(t_minishell *minishell, char *var)
+{
+	t_list *node;
+
+	node = find_var(minishell->vars->vars_list, var);
+	if (node)
+	{
+		ft_lstdelone(node, delete);
+		return(0);
+	}
+	return(1);
 }
