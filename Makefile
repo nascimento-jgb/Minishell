@@ -10,10 +10,11 @@ LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
 PROMPT = open_shell.c get_directory.c prompt.c
 PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
-BUILTINS = cd.c pwd.c echo.c env.c export.c
+BUILTINS = cd.c pwd.c echo.c env.c export.c unset.c
 BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
-SRCS = handle_errors.c clean.c get_env.c minishell_init.c get_vars.c
+SRCS = handle_errors.c clean.c get_env.c minishell_init.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST))
+SANITIZER = -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 12:42:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:27:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ int	prompt(t_minishell *minishell)
 			return (1);
 		}
 		add_history(a);
-		printf("%s\n", a);
-		ms_env(minishell->env->env_list);
 		ms_export(minishell, a);
 		ms_env(minishell->env->env_list);
+		(void)minishell;
 		free(dir);
 		free(a);
 	}

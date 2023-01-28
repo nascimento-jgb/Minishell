@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:03:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 11:05:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:05:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_env *env_init(char **env)
 {
 	t_env	*env_t;
 	
-	env_t = (t_env *)malloc(sizeof(t_env));
+	env_t = (t_env *)ft_calloc(1, sizeof(t_env));
 	if (!env_t)
 		return (NULL);
 	if (env_populate(env, env_t))

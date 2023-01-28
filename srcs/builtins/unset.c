@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:49:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 13:00:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:46:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,36 @@ static t_list	*find_var(t_list *list ,char *var)
 	return (0);
 }
 
-static void delete(void *mem)
+static void delete(void *content)
 {
-	free(mem);
-	mem = NULL;
+	free(content);
+	content = NULL;
 }
 
-int	unset(t_minishell *minishell, char *var)
+int	ms_unset(t_minishell *minishell, char *var)
 {
-	t_list *node;
+	t_list	*tmp;
+	t_list	*node;
 
-	node = find_var(minishell->vars->vars_list, var);
+	node = find_var(minishell->env->env_list, var);
 	if (node)
 	{
-		ft_lstdelone(node, delete);
-		return(0);
+		tmp = minishell->env->env_list;
+		if (tmp == node)
+		{
+			ft_lstclear(&minishell->env->env_list, delete);
+			return (0);
+		}
+		while (tmp)
+		{
+			if (tmp->next == node)
+			{
+				tmp->next = tmp->next->next;
+				ft_lstdelone(node, delete);
+				return(0);
+			}
+			tmp = tmp->next;
+		}
 	}
 	return(1);
 }
