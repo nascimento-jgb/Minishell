@@ -12,8 +12,10 @@ PROMPT = open_shell.c get_directory.c prompt.c
 PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
 BUILTINS = cd.c pwd.c echo.c env.c export.c unset.c
 BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
+VARS = vars_new.c vars_addback.c vars_delnode.c vars_list_clear.c vars_removenode.c
+VARSDEST = $(addprefix ./vars/, $(VARS))
 SRCS = handle_errors.c clean.c get_env.c minishell_init.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST))
 SANITIZER = -fsanitize=address
 all: $(NAME)
 

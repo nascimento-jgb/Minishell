@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   vars_delnode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 14:43:49 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/29 12:48:43 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/29 14:46:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "../../includes/minishell.h"
 
-typedef struct s_vars
+void	vars_delnode(t_vars *node)
 {
-	char			*key;
-	char			*value;
-	char			*path;
-	struct s_vars	*next;
-}	t_vars;
-
-typedef struct s_env
-{
-	t_vars	*vars_list;
-	int		total_env_vars;
-}	t_env;
-
-typedef struct s_minishell
-{
-	t_env	*env;
-	int		argc;
-	char	**argv;
-}	t_minishell;
-
-#endif
+	if (!node)
+		return ;
+	ft_strdel(&node->key);
+	ft_strdel(&node->path);
+	ft_strdel(&node->value);
+	free(node);
+}

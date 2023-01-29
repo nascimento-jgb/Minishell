@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:03:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 21:05:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:13:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,20 @@ static int	total_env_vars(char **env)
 
 static int	env_populate(char **env, t_env *env_t)
 {
-	t_list	*env_list;
+	t_vars	*env_list;
+	t_vars	*node;
 	int		i;
 
 	i = 0;
 	env_list = NULL;
 	while (i < total_env_vars(env))
 	{
-		ft_lstadd_back(&env_list, ft_lstnew(env[i]));
+		node = vars_new(env[i]);
+		vars_addback(&env_list, node);
 		i++;
 	}
 	env_t->total_env_vars = i;
-	env_t->env_list = env_list;
+	env_t->vars_list = env_list;
 	return (0);
 }
 

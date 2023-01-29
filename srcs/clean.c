@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:26:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 21:43:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/29 14:46:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	clean_minishell(t_minishell *minishell)
 	{
 		if (minishell->env)
 		{
-			if (minishell->env->env_list)
-				ft_lstclear(&minishell->env->env_list, delete);
+			if (minishell->env->vars_list)
+				vars_listclear(&minishell->env->vars_list);
 			free(minishell->env);
 		}
 		free(minishell);

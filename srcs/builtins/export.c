@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:23:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 21:30:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:02:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static int validate_path(char *path)
 	return (0);
 }
 
-static int	check_duplicate(t_list *env, char *path)
+static int	check_duplicate(t_vars *env, char *path)
 {
-	t_list *tmp;
+	t_vars *tmp;
 	
 	tmp = env;
 	while (tmp)
 	{
-		if (!ft_strncmp(tmp->content, path, path_length(path)))
+		if (!ft_strncmp(tmp->path, path, path_length(path)))
 			return (1);
 		tmp = tmp->next;
 	}
@@ -58,10 +58,15 @@ static int	check_duplicate(t_list *env, char *path)
 
 int	ms_export(t_minishell *minishell, char *path)
 {
+	t_vars	*node;
+	
 	if (validate_path(path))
 		return(1);
-	if (check_duplicate(minishell->env->env_list, path))
+	if (check_duplicate(minishell->env->vars_list, path))
 		return (1);
-	ft_lstadd_back(&minishell->env->env_list, ft_lstnew(ft_strdup(path)));
+	node = vars_new(path);
+	if (!node)
+		return (1);
+	vars_addback(&minishell->env->vars_list, node);
 	return (0);
 }

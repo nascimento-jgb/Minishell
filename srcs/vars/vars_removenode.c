@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   vars_removenode.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 16:10:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 13:10:52 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/29 12:53:56 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/29 14:33:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ms_env(t_vars *env)
+void	vars_remove_node(t_vars **list, t_vars *node)
 {
-	t_vars *tmp;
+	t_vars	*tmp;
 
-	tmp = env;
-	while (tmp)
+	if (!list || !*list || !node)
+		return ;
+	if ((*list)->key == node->key)
+		vars_listclear(list);
+	else
 	{
-		ft_printf("%s\n", tmp->path);
-		tmp = tmp->next;
+		tmp = *list;
+		while (tmp)
+		{
+			if (tmp->next->key == node->key)
+			{
+				ft_printf("freeing node: %s\n", tmp->next->key);
+				tmp->next = tmp->next->next;
+				vars_delnode(tmp->next);
+				return ;
+			}
+			tmp = tmp->next;
+		}
 	}
 }
