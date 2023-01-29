@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:48:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/29 21:55:31 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,17 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-# define PIPE	1
-// # define REDIR	2
-// # define EXEC	3
-// # define LIST	4
-// # define EXTRA	5
-// # define BUILTIN	6
+# define PIPE			1
+# define REDIRECT		2
+// # define EXEC		3
+// # define QUOTATION	4
+// # define INTERACTIVE	5
+// # define DOLLARSIGN	6
+// # define BUILTIN		7 (echo, cd, pwd, export, unset, env, exit)
+// # define OPERATOR	8 ( || and && )
+// # define WILDCARD	9 ( * )
+
+
 
 typedef struct	s_command
 {
@@ -39,13 +44,15 @@ typedef struct	s_pipecmd
 	struct t_command	*right;
 }	t_pipecmd;
 
-typedef struct	s_pipecmd
+typedef struct	s_redirectcmd
 {
 	int		type;
-	char	*str;
-	struct t_command	*left;
-	struct t_command	*right;
-}	t_pipecmd;
+	char	*file;
+	char	*exit_file;
+	int		mode;
+	int		fd;
+	struct t_command *cmd;
+}	t_redirectcmd;
 
 void	exit_message(char *error);
 void	open_shell(void);

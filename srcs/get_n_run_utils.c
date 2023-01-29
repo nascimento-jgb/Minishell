@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/01/27 15:47:40 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/01/29 21:55:17 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,13 @@ void	run_pipe(t_pipecmd *pipe_cmd, t_command *cmd, int p[])
 	close(p[1]);
 	wait();
 	wait();
-	break ;
+}
+
+void	run_redirect(t_redirectcmd	*redir_cmd, t_command *cmd)
+{
+	redir_cmd = (t_redirectcmd *)cmd;
+	close(redir_cmd->fd);
+	if (open(redir_cmd-> file, redir_cmd->mode) < 0)
+		exit("Filed to open file.\n");
+	run_command(redir_cmd->cmd);
 }
