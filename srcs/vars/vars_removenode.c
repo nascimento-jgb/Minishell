@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:53:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 08:51:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:48:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	vars_remove_node(t_vars **list, t_vars *node)
 {
 	t_vars	*tmp;
-
+	t_vars	*delndode;
+	
 	if (!list || !*list || !node)
 		return ;
 	if ((*list)->key == node->key)
@@ -31,9 +32,9 @@ void	vars_remove_node(t_vars **list, t_vars *node)
 		{
 			if (tmp->next->key == node->key)
 			{
-				ft_printf("freeing node: %s\n", tmp->next->key);
+				delndode = tmp->next;
 				tmp->next = tmp->next->next;
-				vars_delnode(tmp->next);
+				vars_delnode(delndode);
 				return ;
 			}
 			tmp = tmp->next;
