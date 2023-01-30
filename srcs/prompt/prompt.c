@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 14:33:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 08:52:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ int	prompt(t_minishell *minishell)
 			return (1);
 		}
 		add_history(a);
-		ms_export(minishell, a);
-		ms_env(minishell->env->vars_list);
-		//(void)minishell;
 		free(dir);
 		free(a);
 	}
