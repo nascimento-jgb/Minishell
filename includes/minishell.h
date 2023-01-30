@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 15:01:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:31:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			prompt(t_minishell *minishell);
 void		blt_error_msg(char *cmd, int err, char *path);
 void		ms_cd(char *path);
 void		ms_pwd(void);
-void		ms_echo(char *message, int	flag);
+void		ms_echo(char *message, int flag);
 void		ms_env(t_vars *env);
 int			ms_exit(int error_code);
 t_minishell	*minishell_init(int argc, char **argv, char **env);
@@ -42,6 +42,5 @@ void		vars_addback(t_vars **list, t_vars *node);
 void		vars_listclear(t_vars **list);
 void		vars_delnode(t_vars *node);
 void		vars_remove_node(t_vars **list, t_vars *node);
-
 
 #endif

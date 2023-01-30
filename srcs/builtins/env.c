@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:10:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 13:10:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:29:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ms_env(t_vars *env)
 {
-	t_vars *tmp;
+	t_vars	*tmp;
 
 	tmp = env;
 	while (tmp)

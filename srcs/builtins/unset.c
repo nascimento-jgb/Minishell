@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:49:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 13:57:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:28:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static t_vars	*find_var(t_vars *list ,char *var)
+static t_vars	*find_var(t_vars *list, char *var)
 {
 	t_vars	*tmp;
 
@@ -33,5 +33,5 @@ int	ms_unset(t_minishell *minishell, char *var)
 	node = find_var(minishell->env->vars_list, var);
 	if (node)
 		vars_remove_node(&minishell->env->vars_list, node);
-	return(1);
+	return (1);
 }

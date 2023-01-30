@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:23:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 15:02:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:28:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	path_length(char *path)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (path[i] && path[i] != '=')
@@ -22,7 +22,7 @@ static int	path_length(char *path)
 	return (i);
 }
 
-static int validate_path(char *path)
+static int	validate_path(char *path)
 {
 	int	i;
 	int	equal;
@@ -44,8 +44,8 @@ static int validate_path(char *path)
 
 static int	check_duplicate(t_vars *env, char *path)
 {
-	t_vars *tmp;
-	
+	t_vars	*tmp;
+
 	tmp = env;
 	while (tmp)
 	{
@@ -59,9 +59,9 @@ static int	check_duplicate(t_vars *env, char *path)
 int	ms_export(t_minishell *minishell, char *path)
 {
 	t_vars	*node;
-	
+
 	if (validate_path(path))
-		return(1);
+		return (1);
 	if (check_duplicate(minishell->env->vars_list, path))
 		return (1);
 	node = vars_new(path);

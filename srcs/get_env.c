@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:03:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 17:13:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:29:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static int	env_populate(char **env, t_env *env_t)
 	return (0);
 }
 
-t_env *env_init(char **env)
+t_env	*env_init(char **env)
 {
 	t_env	*env_t;
-	
+
 	env_t = (t_env *)ft_calloc(1, sizeof(t_env));
 	if (!env_t)
 		return (NULL);

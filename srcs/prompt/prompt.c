@@ -6,19 +6,25 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 09:49:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:27:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+static void	free_vars(char *dir, char *a)
+{
+	free(dir);
+	free(a);
+}
+
 int	prompt(t_minishell *minishell)
 {
+	char	*a;
+	char	*dir;
+
 	while (1)
 	{
-		char	*a;
-		char	*dir;
-
 		dir = get_dir();
 		if (!dir)
 			return (1);
@@ -29,9 +35,7 @@ int	prompt(t_minishell *minishell)
 			return (1);
 		}
 		add_history(a);
-		free(dir);
-		free(a);
+		free_vars(dir, a);
 	}
-	//rl_clear_history();
 	return (0);
 }

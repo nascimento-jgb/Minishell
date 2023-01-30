@@ -6,18 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:26:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 14:46:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:30:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-void	delete(void *mem)
-{
-	free(mem);
-	mem = NULL;
-	//(void)mem;
-}
 
 void	clean_minishell(t_minishell *minishell)
 {

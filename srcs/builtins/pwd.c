@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:28:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 16:44:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:28:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ms_pwd(void)
 {
-	char dir[1024];
+	char	dir[1024];
 
 	if (!getcwd(dir, 1024))
 	{

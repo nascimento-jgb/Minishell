@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:44:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 14:40:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:08:53 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	vars_listclear(t_vars **list)
 {
-	t_vars *tmp;
-	
+	t_vars	*tmp;
+
 	if (list)
 	{
 		while (*list)

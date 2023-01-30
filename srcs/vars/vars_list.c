@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 08:24:05 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 12:37:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:10:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int validate_path(char *path)
+static int	validate_path(char *path)
 {
 	int	i;
 	int	equal;
@@ -37,7 +37,7 @@ static char	*get_key(char *var)
 	int		i;
 	int		j;
 	char	*key;
-	
+
 	i = 0;
 	while (var[i] && var[i] != '=')
 		i++;
@@ -68,12 +68,12 @@ static char	*get_value(char *var)
 	while (var[i])
 		value[j++] = var[i++];
 	value[j] = '\0';
-	return (value); 
+	return (value);
 }
 
-t_vars *new_var(char *var)
+t_vars	*new_var(char *var)
 {
-	t_vars *new;
+	t_vars	*new;
 
 	if (validate_path(var))
 		return (NULL);

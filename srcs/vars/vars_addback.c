@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:39:51 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 15:01:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:10:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	vars_addback(t_vars **list, t_vars *node)
 {
-	t_vars *tmp;
-	
+	t_vars	*tmp;
+
 	if (!*list)
 		*list = node;
 	else

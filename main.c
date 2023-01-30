@@ -6,12 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/28 20:33:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:31:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minishell.h"
-
 
 int	fork_create(void)
 {
@@ -30,7 +29,7 @@ char	*get_cmd_line(char *line)
 	if (line)
 	{
 		free(line);
-		line = (char *)NULL;
+		line = (char *) NULL;
 	}
 	line = readline("$ ");
 	return (line);
@@ -38,8 +37,8 @@ char	*get_cmd_line(char *line)
 
 int	main(int argc, char **argv, char **env)
 {
-	t_minishell *minishell;
-	
+	t_minishell	*minishell;
+
 	minishell = minishell_init(argc, argv, env);
 	if (!minishell)
 		return (1);
