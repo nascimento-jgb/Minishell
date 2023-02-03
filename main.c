@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 21:55:43 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:26:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,7 @@ int	main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	line_read = (char *)NULL;
-	// if (argc < 2)
-	// 	exit_message("Invalid input.\n");
-	// else
-	// 	array = get_input(argc, argv);
 
-	// while ((fd = open("console", O_RDWR)) >= 0)
-	// {
-	// 	if (fd >=3)
-	// 	{
-	// 		close(fd);
-	// 		break ;
-	// 	}
-	// }
 	opening_files();
 	open_shell();
 	prompt();

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/01/29 21:55:20 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:26:06 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_command	*redirect_command(t_command *subcmd, char *file, char *exit_file, int 
 	if (!cmd)
 		exit_message("Error.\n"); // doube check if exit can be done at this point of the program
 	memset(cmd, 0, sizeof(*cmd));
-	cmd->type = REDIR;
+	cmd->type = REDIRECT;
 	cmd->file = file;
 	cmd->exit_file = exit_file;
 	cmd->mode = mode;

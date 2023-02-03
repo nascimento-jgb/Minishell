@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_n_run.c                                        :+:      :+:    :+:   */
+/*   parting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:47:14 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/03 11:26:04 by jonascim         ###   ########.fr       */
+/*   Created: 2023/02/03 09:29:59 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/03 11:26:03 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-// insert here function get command
-// int	get_command()
-// {
-
-// }
-
-
-void	run_command(t_command *cmd)
+t_command *parse_command(char *scan)
 {
-	t_pipecmd		*pipe_cmd;
-	t_redirectcmd	*redir_cmd;
-	int				p[2];
+	char *end_scan;
+	t_command *cmd;
 
-	if (cmd == 0)
-		exit();
-	else if (cmd->command_type == PIPE)
-		run_pipe(pipe_cmd, cmd, p);
-	else if (cmd->command_type == REDIRECT)
-		run_redirect(redir_cmd, cmd);
-	else
-		exit_message("run_command() Error.\n");
+	end_scan = scan + ft_strlen(scan);
+	cmd = parse_line(&scan, end_scan);
+	skip_to_tokken(&scan, end_scan, "");
+	if (scan != end_scan)
+		exit_message("Syntax error.\n");
+	null_terminate(cmd);
+	return (cmd);
+}
+
+t_command parse_line(char **ptr_scan, char *end_scan)
+{
+	t_command *cmd;
+
 }
