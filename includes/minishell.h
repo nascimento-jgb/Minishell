@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/03 11:26:07 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/06 08:54:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@
 
 # define PIPE			1
 # define REDIRECT		2
-// # define EXEC		3
+# define EXEC			3
 // # define QUOTATION	4
 // # define INTERACTIVE	5
 // # define DOLLARSIGN	6
 // # define BUILTIN		7 (echo, cd, pwd, export, unset, env, exit)
-// # define OPERATOR	8 ( || and && )
-// # define WILDCARD	9 ( * )
-
+# define OPERATORAND	8 //(&&)
+// # define OPERATOROR  9 (||)
+// # define WILDCARD	0 (*)
+# define MAXARGS 		10
 
 
 typedef struct	s_command
@@ -53,6 +54,19 @@ typedef struct	s_redirectcmd
 	int			fd;
 	t_command	*cmd;
 }	t_redirectcmd;
+
+typedef struct s_execcmd
+{
+	int		type;
+	char	*argv[MAXARGS];
+	char	*eargv[MAXARGS];
+}	t_execcmd;
+
+typedef struct	s_andcmd
+{
+	int			type;
+	t_command	*cmd;
+}	t_andcmd;
 
 void	exit_message(char *error);
 void	open_shell(void);
