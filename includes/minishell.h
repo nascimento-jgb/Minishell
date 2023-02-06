@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:31:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:05:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <readline/history.h>
 # include <string.h>
 # include "structs.h"
+# include <signal.h>
 
 void		exit_message(char *error);
 void		open_shell(void);
@@ -42,5 +43,6 @@ void		vars_addback(t_vars **list, t_vars *node);
 void		vars_listclear(t_vars **list);
 void		vars_delnode(t_vars *node);
 void		vars_remove_node(t_vars **list, t_vars *node);
+void		ms_signals();
 
 #endif

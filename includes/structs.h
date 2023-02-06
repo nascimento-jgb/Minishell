@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/29 14:43:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:16:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_minishell
 	t_env	*env;
 	int		argc;
 	char	**argv;
+	char	*promptLine;
 }	t_minishell;
 
 #endif

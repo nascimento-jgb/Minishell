@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:31:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:00:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv, char **env)
 	if (!minishell)
 		return (1);
 	open_shell();
+	ms_signals(minishell);
 	prompt(minishell);
 	clean_minishell(minishell);
 	return (0);

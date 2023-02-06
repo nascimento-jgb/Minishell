@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/06 17:39:46 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/06 18:05:24 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	free_vars(char *dir, char *a)
+void	handle_sigcount(int sig)
 {
-	free(dir);
-	free(a);
+	(void)sig;
+	char *str;
+
+	str = ft_strdup("Error hapened\n");
+	write(2, str, ft_strlen(str));
+	ft_strdel(&str);
 }
 
-int	prompt(t_minishell *minishell)
+void	ms_signals(void)
 {
-	char	*a;
-
-	while (1)
-	{
-		minishell->promptLine = get_dir();
-		if (!minishell->promptLine)
-			return (1);
-		a = readline(minishell->promptLine);
-		if (!a)
-		{
-			free(minishell->promptLine);
-			return (1);
-		}
-		add_history(a);
-		ms_pwd();
-		free_vars(minishell->promptLine, a);
-	}
-	return (0);
+	struct sigaction sa;
+	sa.__sigaction_u.__sa_handler = (void (*)(int))handle_sigcount;
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &sa, NULL);
+	//signal(SIGINT, (void (*)(int))handle_sigcount);
 }
