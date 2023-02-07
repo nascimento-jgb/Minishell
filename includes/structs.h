@@ -6,12 +6,14 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 13:28:44 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:22:17 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+#include "defines.h"
 
 typedef struct s_vars
 {
@@ -35,18 +37,6 @@ typedef struct s_minishell
 	char	*promptLine;
 	int		signalDetect;
 }	t_minishell;
-
-# define PIPE			1
-# define REDIRECT		2
-# define EXEC			3
-// # define QUOTATION	4
-// # define INTERACTIVE	5
-// # define DOLLARSIGN	6
-// # define BUILTIN		7 (echo, cd, pwd, export, unset, env, exit)
-# define OPERATORAND	8 //(&&)
-// # define OPERATOROR  9 (||)
-// # define WILDCARD	0 (*)
-# define MAXARGS 		10
 
 typedef struct	s_command
 {
