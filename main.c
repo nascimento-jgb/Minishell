@@ -6,9 +6,10 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/06 18:00:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:55:17 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "./includes/minishell.h"
 
@@ -35,7 +36,7 @@ char	*get_cmd_line(char *line)
 	return (line);
 }
 
-int	main(int argc, char **argv, char **env)
+int	main(int argc, char **argv)
 {
 	t_minishell	*minishell;
 

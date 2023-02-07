@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/06 17:39:46 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:55:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	prompt(t_minishell *minishell)
 			free(minishell->promptLine);
 			return (1);
 		}
+		parse_command(a);
 		add_history(a);
 		ms_pwd();
 		free_vars(minishell->promptLine, a);

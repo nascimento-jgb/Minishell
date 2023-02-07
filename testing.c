@@ -42,7 +42,7 @@ struct listcmd {
   int type;
   struct cmd *left;
   struct cmd *right;
-};
+}; // NOT NECESSARY
 
 struct backcmd {
   int type;
@@ -89,7 +89,7 @@ runcmd(struct cmd *cmd)
     runcmd(rcmd->cmd);
     break;
 
-  case LIST:
+  case LIST: // NOT NECESSARY
     lcmd = (struct listcmd*)cmd;
     if(fork1() == 0)
       runcmd(lcmd->left);
@@ -274,26 +274,28 @@ gettoken(char **ps, char *es, char **q, char **eq)
   if(q)
     *q = s;
   ret = *s;
-  switch(*s){
-  case 0:
-    break;
-  case '|':
-  case '(':
-  case ')':
-  case ';':
-  case '&':
-  case '<':
-    s++;
-    break;
-  case '>':
-    s++;
-    if(*s == '>'){
+  switch(*s)
+  {
+    case 0:
+      break;
+    case '|':
+    case '(':
+    case ')':
+    case ';':
+    case '&':
+    case '<':
+      s++;
+      break;
+    case '>':
+      s++;
+    if(*s == '>')
+    {
       ret = '+';
       s++;
     }
-    break;
-  default:
-    ret = 'a';
+      break;
+    default:
+      ret = 'a';
     while(s < es && !strchr(whitespace, *s) && !strchr(symbols, *s))
       s++;
     break;

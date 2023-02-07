@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/06 17:16:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:55:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,52 @@ typedef struct s_minishell
 	char	**argv;
 	char	*promptLine;
 }	t_minishell;
+
+# define PIPE			1
+# define REDIRECT		2
+# define EXEC			3
+// # define QUOTATION	4
+// # define INTERACTIVE	5
+// # define DOLLARSIGN	6
+// # define BUILTIN		7 (echo, cd, pwd, export, unset, env, exit)
+# define OPERATORAND	8 //(&&)
+// # define OPERATOROR  9 (||)
+// # define WILDCARD	0 (*)
+# define MAXARGS 		10
+
+typedef struct	s_command
+{
+	int	command_type;
+}	t_command;
+
+typedef struct	s_pipecmd
+{
+	int					type;
+	struct s_command	*left;
+	struct s_command	*right;
+}	t_pipecmd;
+
+typedef struct	s_redirectcmd
+{
+	int					type;
+	char				*file;
+	char				*exit_file;
+	int					mode;
+	int					fd;
+	struct s_command	*cmd;
+}	t_redirectcmd;
+
+typedef struct s_execcmd
+{
+	int		type;
+	char	*argv[MAXARGS];
+	char	*eargv[MAXARGS];
+}	t_execcmd;
+
+typedef struct	s_andcmd
+{
+	int					type;
+	struct s_command	*cmd;
+}	t_andcmd;
 
 #endif
