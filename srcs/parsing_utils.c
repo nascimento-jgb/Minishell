@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:59 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/06 09:36:00 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:46:09 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_command	*parse_redir(t_command *cmd, char **ptr_scan, char *end_scan)
 		aux_tokken = get_tokken(ptr_scan, end_scan, 0, 0);
 		if (get_tokken(ptr_scan, end_scan, *tokken, *end_tokken) != 'a')
 			exit_message(" Error - missing file for redirection.\n");
-		if (aux_tokken == '<' || aux_tokken == '-') // redirections must be checked
+		if (aux_tokken == '<' || aux_tokken == '-') // redirections must be checked - means <<
 			cmd =  redir_cmd(cmd, tokken, end_tokken, O_RDONLY, 0);
 		else if (aux_tokken == '>' || aux_tokken == '+') // redirections must be checked
 			cmd = redir_cmd(cmd, tokken, end_tokken, O_WRONLY | O_CREAT, 0);
