@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:14:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/27 15:01:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:19:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static char	*tmp_join(char *str1, char *str2)
 {
-	char *tmp;
+	char	*tmp;
+
 	tmp = ft_strjoin(str1, str2);
 	ft_strdel(&str1);
 	ft_strdel(&str2);
@@ -23,7 +24,7 @@ static char	*tmp_join(char *str1, char *str2)
 
 char	*add_color(char *color, char *str)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = tmp_join(color, str);
 	if (!tmp)
@@ -34,11 +35,12 @@ char	*add_color(char *color, char *str)
 	return (tmp);
 }
 
-static char *filter_dir(char *username)
+static char	*filter_dir(char *username)
 {
 	char	*dir;
 	char	*final_dir;
 	int		i;
+
 	dir = (char *)malloc(sizeof(char) * 1024);
 	if (!dir)
 		return (NULL);
@@ -54,11 +56,26 @@ static char *filter_dir(char *username)
 		return (NULL);
 	}
 	free(dir);
-	final_dir = tmp_join( ft_strdup("~"), final_dir);
+	final_dir = tmp_join(ft_strdup("~"), final_dir);
 	if (!final_dir)
 		return (0);
 	final_dir = add_color(ft_strdup("\033[92m"), final_dir);
 	return (final_dir);
+}
+
+static char	*final_prompt(char *username, char *dir)
+{
+	char	*prompt;
+
+	prompt = tmp_join(username, dir);
+	if (!prompt)
+	{
+		ft_strdel(&username);
+		ft_strdel(&dir);
+		return (0);
+	}
+	prompt = tmp_join(prompt, ft_strdup("$ "));
+	return (prompt);
 }
 
 char	*get_dir(void)
@@ -76,25 +93,12 @@ char	*get_dir(void)
 		free(username);
 		return (NULL);
 	}
-	username = tmp_join(ft_strdup("\33[31m@"), username);
+	username = add_color(ft_strdup("\33[31m@"), username);
 	if (!username)
 	{
 		free(dir);
 		return (NULL);
 	}
-	username = tmp_join(username, ft_strdup(":\33[0m"));
-	if (!username)
-	{
-		free(dir);
-		return (NULL);
-	}
-	prompt = tmp_join(username, dir);
-	if (!prompt)
-	{
-		ft_strdel(&username);
-		ft_strdel(&dir);
-		return (0);
-	}
-	prompt = tmp_join(prompt, ft_strdup("$ "));
+	prompt = final_prompt(username, dir);
 	return (prompt);
 }

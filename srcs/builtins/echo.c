@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 16:13:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:32:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 15:40:26 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:29:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+static void	remove_spaces(char *message)
 {
-	t_list	*tmp;
-
-	if (lst)
+	while (*message)
 	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			(*lst) = tmp;
-		}
+		if (!ft_isspace(*message))
+			ft_putchar(*message);
+		else if (ft_isspace(*message) && !ft_isspace(*(message + 1)))
+			ft_putchar(*message);
+		message++;
 	}
+}
+
+void	ms_echo(char *message, int flag)
+{
+	remove_spaces(message);
+	if (!flag)
+		ft_putchar('\n');
 }

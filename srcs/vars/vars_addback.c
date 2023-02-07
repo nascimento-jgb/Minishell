@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   vars_addback.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 16:13:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:32:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/29 12:39:51 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:10:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	vars_addback(t_vars **list, t_vars *node)
 {
-	t_list	*tmp;
+	t_vars	*tmp;
 
-	if (lst)
+	if (!*list)
+		*list = node;
+	else
 	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			(*lst) = tmp;
-		}
+		tmp = *list;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = node;
 	}
 }

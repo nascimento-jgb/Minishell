@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 11:30:04 by jonascim         ###   ########.fr       */
+/*   Created: 2023/01/28 11:26:02 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:30:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	exit_message(char *error)
+void	clean_minishell(t_minishell *minishell)
 {
-	ft_putstr_fd(error, 2);
-	exit(1);
-}
-
-void	blt_error_msg(char *cmd, int err, char *path)
-{
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(strerror(err), 2);
-	ft_putstr_fd(" : ", 2);
-	ft_putstr_fd(path, 2);
+	if (minishell)
+	{
+		if (minishell->env)
+		{
+			if (minishell->env->vars_list)
+				vars_listclear(&minishell->env->vars_list);
+			free(minishell->env);
+		}
+		free(minishell);
+	}
 }

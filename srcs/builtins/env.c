@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 16:13:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:32:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 16:10:02 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:29:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ms_env(t_vars *env)
 {
-	t_list	*tmp;
+	t_vars	*tmp;
 
-	if (lst)
+	tmp = env;
+	while (tmp)
 	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			(*lst) = tmp;
-		}
+		ft_printf("%s\n", tmp->path);
+		tmp = tmp->next;
 	}
 }

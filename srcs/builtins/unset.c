@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/06 16:04:29 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/28 12:49:18 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:28:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	free_vars(char *dir, char *a)
+static t_vars	*find_var(t_vars *list, char *var)
 {
-	free(dir);
-	free(a);
-}
+	t_vars	*tmp;
 
-int	prompt(t_minishell *minishell)
-{
-	char	*a;
-	char	*dir;
-
-	while (1)
+	tmp = list;
+	while (tmp)
 	{
-		dir = get_dir();
-		if (!dir)
-			return (1);
-		a = readline(dir);
-		if (!a)
-		{
-			free(dir);
-			return (1);
-		}
-		add_history(a);
-		free_vars(dir, a);
+		if (!ft_strncmp(tmp->path, var, ft_strlen(var)))
+			return (tmp);
+		tmp = tmp->next;
 	}
 	return (0);
+}
+
+int	ms_unset(t_minishell *minishell, char *var)
+{
+	t_vars	*node;
+
+	node = find_var(minishell->env->vars_list, var);
+	if (node)
+		vars_remove_node(&minishell->env->vars_list, node);
+	return (1);
 }

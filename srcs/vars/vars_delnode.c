@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   vars_delnode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 16:13:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:32:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/29 12:48:43 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:10:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	vars_delnode(t_vars *node)
 {
-	t_list	*tmp;
-
-	if (lst)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			(*lst) = tmp;
-		}
-	}
+	if (!node)
+		return ;
+	ft_strdel(&node->key);
+	ft_strdel(&node->path);
+	ft_strdel(&node->value);
+	free(node);
 }

@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 16:13:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:32:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/27 15:28:03 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:28:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ms_pwd(void)
 {
-	t_list	*tmp;
+	char	dir[1024];
 
-	if (lst)
+	if (!getcwd(dir, 1024))
 	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			(*lst) = tmp;
-		}
+		blt_error_msg("pwd", errno, "pwd");
+		return ;
 	}
+	ft_printf("%s\n", dir);
 }

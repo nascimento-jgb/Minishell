@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   minishell_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 11:30:04 by jonascim         ###   ########.fr       */
+/*   Created: 2023/01/28 11:16:50 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/30 11:29:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	exit_message(char *error)
+t_minishell	*minishell_init(int argc, char **argv, char **env)
 {
-	ft_putstr_fd(error, 2);
-	exit(1);
-}
+	t_minishell	*minishell;
 
-void	blt_error_msg(char *cmd, int err, char *path)
-{
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(strerror(err), 2);
-	ft_putstr_fd(" : ", 2);
-	ft_putstr_fd(path, 2);
+	minishell = ft_calloc(1, sizeof(t_minishell));
+	if (!minishell)
+		return (NULL);
+	minishell->argc = argc;
+	minishell->argv = argv;
+	minishell->env = env_init(env);
+	return (minishell);
 }

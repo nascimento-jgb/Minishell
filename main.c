@@ -6,12 +6,12 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/06 09:36:04 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:28:32 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
 
+#include "./includes/minishell.h"
 
 int	fork_create(void)
 {
@@ -30,40 +30,21 @@ char	*get_cmd_line(char *line)
 	if (line)
 	{
 		free(line);
-		line = (char *)NULL;
+		line = (char *) NULL;
 	}
 	line = readline("$ ");
 	return (line);
 }
 
-void	opening_files(void)
-{
-	int	fd;
-
-	while ((fd = open("console", O_RDWR)) >= 0)
-	{
-		if (fd >= 3)
-		{
-			close(fd);
-			break;
-		}
-	}
-}
-
 int	main(int argc, char **argv)
 {
-	// char	**array;
-	// // int	fd;
-	static char *line_read;
+	t_minishell	*minishell;
 
-	(void)argc;
-	(void)argv;
-	line_read = (char *)NULL;
-
-	opening_files();
+	minishell = minishell_init(argc, argv, env);
+	if (!minishell)
+		return (1);
 	open_shell();
-	prompt();
-	line_read = get_cmd_line(line_read);
-	free(line_read);
+	prompt(minishell);
+	clean_minishell(minishell);
 	return (0);
 }

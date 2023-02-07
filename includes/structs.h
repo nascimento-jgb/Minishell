@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 16:13:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:32:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/29 14:43:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+typedef struct s_vars
 {
-	t_list	*tmp;
+	char			*key;
+	char			*value;
+	char			*path;
+	struct s_vars	*next;
+}	t_vars;
 
-	if (lst)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			(*lst) = tmp;
-		}
-	}
-}
+typedef struct s_env
+{
+	t_vars	*vars_list;
+	int		total_env_vars;
+}	t_env;
+
+typedef struct s_minishell
+{
+	t_env	*env;
+	int		argc;
+	char	**argv;
+}	t_minishell;
+
+#endif

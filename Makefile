@@ -10,16 +10,22 @@ LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
 PROMPT = open_shell.c get_directory.c prompt.c
 PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
-SRCS = handle_errors.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST))
+BUILTINS = cd.c pwd.c echo.c env.c export.c unset.c
+BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
+VARS = vars_new.c vars_addback.c vars_delnode.c vars_list_clear.c vars_removenode.c
+VARSDEST = $(addprefix ./vars/, $(VARS))
+SRCS = handle_errors.c clean.c get_env.c minishell_init.c
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST))
+SANITIZER = -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c
-	make -C libft
+	@make -C libft
+	@make bonus -C libft
 	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT) -lreadline
 
 clean:
-	rm -f $(LODEST)
+	rm -f $(LODEST) ./libft/*.o ./libft/ft_printf/*.o
 
 fclean:
 	rm -f $(NAME) ./libft/$(LIBFT)

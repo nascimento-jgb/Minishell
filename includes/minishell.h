@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/06 08:54:01 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:24:56 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
-# include <stdio.h>
+# include <errno.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -67,11 +67,29 @@ typedef struct	s_andcmd
 	int			type;
 	t_command	*cmd;
 }	t_andcmd;
+# include <string.h>
+# include "structs.h"
 
-void	exit_message(char *error);
-void	open_shell(void);
-char	*get_dir(void);
-int		prompt(void);
+void		exit_message(char *error);
+void		open_shell(void);
+char		*get_dir(void);
+int			prompt(t_minishell *minishell);
+void		blt_error_msg(char *cmd, int err, char *path);
+void		ms_cd(char *path);
+void		ms_pwd(void);
+void		ms_echo(char *message, int flag);
+void		ms_env(t_vars *env);
+int			ms_exit(int error_code);
+t_minishell	*minishell_init(int argc, char **argv, char **env);
+t_env		*env_init(char **env);
+void		clean_minishell(t_minishell *minishell);
+int			ms_export(t_minishell *minishell, char *path);
+int			ms_unset(t_minishell *minishell, char *var);
+t_vars		*vars_new(char *var);
+void		vars_addback(t_vars **list, t_vars *node);
+void		vars_listclear(t_vars **list);
+void		vars_delnode(t_vars *node);
+void		vars_remove_node(t_vars **list, t_vars *node);
 
 //parsing
 int		check_tokken(char *scan);
