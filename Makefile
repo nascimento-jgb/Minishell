@@ -16,7 +16,8 @@ VARS = vars_new.c vars_addback.c vars_delnode.c vars_list_clear.c vars_removenod
 VARSDEST = $(addprefix ./vars/, $(VARS))
 SIGNALS = signals.c
 SIGNALSDEST = $(addprefix ./signals/, $(SIGNALS))
-SRCS = handle_errors.c clean.c get_env.c minishell_init.c
+SRCS = handle_errors.c clean.c get_env.c minishell_init.c \
+#parsing_utils.c parsing.c null_terminate.c initializing.c get_n_run.c get_n_run_utils.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST) $(SIGNALSDEST))
 SANITIZER = -fsanitize=address
 all: $(NAME)

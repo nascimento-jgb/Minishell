@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_n_run.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:14 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/06 09:36:22 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:53:44 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	run_command(t_command *cmd)
 	int				p[2];
 
 	if (cmd == 0)
-		exit();
+		exit(1);
 	else if (cmd->command_type == PIPE)
 		run_pipe(&pipe_cmd, cmd, &p);
 	else if (cmd->command_type == REDIRECT)

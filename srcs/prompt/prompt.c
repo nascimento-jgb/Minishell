@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 11:55:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:17:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ static void	free_vars(char *dir, char *a)
 
 int	prompt(t_minishell *minishell)
 {
-	char	*a;
+	char	*dir;
 
-	while (1)
+	while (minishell->signalDetect)
 	{
-		minishell->promptLine = get_dir();
-		if (!minishell->promptLine)
+		ms_signals(minishell);
+		dir = get_dir();
+		if (!dir)
 			return (1);
-		a = readline(minishell->promptLine);
-		if (!a)
+		minishell->promptLine = readline(dir);
+		if (!minishell->promptLine)
 		{
-			free(minishell->promptLine);
+			free(dir);
 			return (1);
 		}
-		parse_command(a);
-		add_history(a);
-		ms_pwd();
-		free_vars(minishell->promptLine, a);
+		//parse_command(minishell->promptLine);
+		add_history(minishell->promptLine);
+		free_vars(dir, minishell->promptLine);
 	}
 	return (0);
 }

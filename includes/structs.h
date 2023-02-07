@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 11:55:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:28:44 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_minishell
 	int		argc;
 	char	**argv;
 	char	*promptLine;
+	int		signalDetect;
 }	t_minishell;
 
 # define PIPE			1

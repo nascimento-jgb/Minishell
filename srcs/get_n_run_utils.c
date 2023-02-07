@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_n_run_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/06 09:35:44 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:55:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	run_exec(t_execcmd *exec_cmd, t_command *cmd)
 {
 	exec_cmd = (t_execcmd *)cmd;
 	if (exec_cmd->argv[0] == 0)
-		exit();
+		exit(1);
 	exec(exec_cmd->argv[0], exec_cmd->argv);
 	printf(2, "exec %s failed\n", exec_cmd->argv[0]);
 }

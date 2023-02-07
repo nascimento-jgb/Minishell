@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:16:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:29:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:28:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_minishell	*minishell_init(int argc, char **argv, char **env)
 	minishell->argc = argc;
 	minishell->argv = argv;
 	minishell->env = env_init(env);
+	minishell->signalDetect = 1;
 	return (minishell);
 }
