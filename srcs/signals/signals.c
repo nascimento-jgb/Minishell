@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 15:16:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:35:45 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	handle_sigcount(int sig)
 		//str = ft_strdup("Error hapened\n");
 		//write(2, str, ft_strlen(str));
 		ft_putstr_fd("\n", 2);
+		//rl_replace_line("", 0);
 		rl_on_new_line();
 		signalDetect = 0;
 	}

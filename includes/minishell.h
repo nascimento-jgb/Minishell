@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 15:21:45 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:35:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@
 # include "structs.h"
 # include <signal.h>
 # include "defines.h"
-
-# define PIPE			1
-# define REDIRECT		2
-# define EXEC			3
-// # define QUOTATION	4
-// # define INTERACTIVE	5
-// # define DOLLARSIGN	6
-// # define BUILTIN		7 (echo, cd, pwd, export, unset, env, exit)
-# define OPERATORAND	8 //(&&)
-// # define OPERATOROR  9 (||)
-// # define WILDCARD	0 (*)
-# define MAXARGS 		10
 
 void		exit_message(char *error);
 void		open_shell(void);
