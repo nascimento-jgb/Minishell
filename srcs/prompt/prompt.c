@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 10:24:49 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:56:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	prompt(t_minishell *minishell)
 {
 	while (minishell->signalDetect)
 	{
-		ms_signals(minishell);
+		ms_signals();
 		minishell->currentDir = get_dir();
 		if (!minishell->currentDir)
 			return (1);

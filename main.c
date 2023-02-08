@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 10:22:41 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:51:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ int	main(int argc, char **argv, char **env)
 	if (!minishell)
 		return (1);
 	open_shell();
-	while(1)
-	{
-		if (!prompt(minishell))
-			minishell->signalDetect = 1;
-	}
+	prompt(minishell);
 	clean_minishell(minishell);
 	return (0);
 }

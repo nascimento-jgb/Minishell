@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 10:22:57 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:57:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		vars_addback(t_vars **list, t_vars *node);
 void		vars_listclear(t_vars **list);
 void		vars_delnode(t_vars *node);
 void		vars_remove_node(t_vars **list, t_vars *node);
-void		ms_signals(t_minishell *minishell);
+void		ms_signals(void);
 int			fork_create(void);
 
 
