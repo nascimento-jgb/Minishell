@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 17:28:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:33:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	handle_sigcount(int sig)
 {
 	if (sig == SIGINT)
 	{
-		//ft_putstr_fd("\n", 2);
+		ft_putstr_fd("\n", 2);
 		//rl_replace_line("", 0);
 		//rl_on_new_line();
+		//rl_redisplay();
 		signalDetect = 0;
 	}
 
