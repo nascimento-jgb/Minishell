@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 10:05:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/08 10:24:49 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	prompt(t_minishell *minishell)
 			free(minishell->currentDir);
 			return (1);
 		}
-		//parse_command(minishell->promptLine);
+		if (fork_create() == 0)
+			run_command(parse_command(minishell->promptLine));
+		wait(NULL);
 		add_history(minishell->promptLine);
 		free_vars(minishell->currentDir, minishell->promptLine);
 	}

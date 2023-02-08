@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/07 15:40:24 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/08 10:22:57 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <string.h>
-# include "structs.h"
 # include <signal.h>
+# include <unistd.h>
+# include "structs.h"
 # include "defines.h"
+
 
 void		exit_message(char *error);
 void		open_shell(void);
@@ -45,25 +47,36 @@ void		vars_listclear(t_vars **list);
 void		vars_delnode(t_vars *node);
 void		vars_remove_node(t_vars **list, t_vars *node);
 void		ms_signals(t_minishell *minishell);
+int			fork_create(void);
 
 
-//parsing
-int			check_tokken(char *scan);
-int			skip_to_tokken(char **ptr_scan, char *end_scan, char *tokken);
-int			get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn);
+//initializer
+t_command	*pipe_command(t_command *left_param, t_command *right_param);
+t_command	*redirect_command(t_command *subcmd, char *file, char *exit_file, int mode, int fd);
+t_command	*exec_command(void);
+t_command	*and_command(t_command *subcmd);
+
+//parser
+t_command	*parse_command(char *scan);
+t_command	*parse_line(char **ptr_scan, char *end_scan);
+t_command	*parse_pipe(char **ptr_scan, char *end_scan);
+t_command	*parse_redir(t_command *cmd, char **ptr_scan, char *end_scan);
+t_command	*parse_parenthesis(char **ptr_scan, char *end_scan);
 t_command	*parse_exec(char **ptr_scan, char *end_scan);
 
 //parsing utils
-t_command	*parse_command(char *scan);
-t_command	*parse_line(char **ptr_scan, char *end_scan);
 int			check_tokken(char *scan);
 int			skip_to_tokken(char **ptr_scan, char *end_scan, char *tokken);
 int			get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn);
 t_command	*null_terminate(t_command *cmd);
-void		run_command(t_command *cmd);
-void		run_pipe(t_pipecmd *pipe_cmd, t_command *cmd, int p[]);
-void		run_redirect(t_redirectcmd	*redir_cmd, t_command *cmd);
-void		run_andoperator(t_andcmd *and_operator, t_command *cmd);
-void		run_exec(t_execcmd *exec_cmd, t_command *cmd);
-int			fork_create(void);
+
+//get and run commands
+void	run_command(t_command *cmd);
+
+//get and run commands utils
+void	run_pipe(t_pipecmd *pipe_cmd, t_command *cmd, int p[]);
+void	run_redirect(t_redirectcmd	*redir_cmd, t_command *cmd);
+void	run_andoperator(t_andcmd *and_operator, t_command *cmd);
+void	run_exec(t_execcmd *exec_cmd, t_command *cmd);
+
 #endif

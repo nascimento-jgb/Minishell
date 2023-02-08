@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:59 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/07 11:46:09 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:58:32 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 t_command	*parse_command(char *scan)
 {
@@ -47,7 +47,7 @@ t_command	*parse_pipe(char **ptr_scan, char *end_scan)
 	if (skip_to_tokken(ptr_scan, end_scan, "|"))
 	{
 		get_tokken(ptr_scan, end_scan, 0, 0);
-		cmd = pipe_command(cmd, parse_pipe(ptr_scan, end_scan))
+		cmd = pipe_command(cmd, parse_pipe(ptr_scan, end_scan));
 	}
 	return (cmd);
 }
@@ -61,12 +61,12 @@ t_command	*parse_redir(t_command *cmd, char **ptr_scan, char *end_scan)
 	while (skip_to_tokken(ptr_scan, end_scan, "<>"))
 	{
 		aux_tokken = get_tokken(ptr_scan, end_scan, 0, 0);
-		if (get_tokken(ptr_scan, end_scan, *tokken, *end_tokken) != 'a')
+		if (get_tokken(ptr_scan, end_scan, &tokken, &end_tokken) != 'a')
 			exit_message(" Error - missing file for redirection.\n");
 		if (aux_tokken == '<' || aux_tokken == '-') // redirections must be checked - means <<
-			cmd =  redir_cmd(cmd, tokken, end_tokken, O_RDONLY, 0);
+			cmd = redirect_command(cmd, tokken, end_tokken, O_RDONLY, 0);
 		else if (aux_tokken == '>' || aux_tokken == '+') // redirections must be checked
-			cmd = redir_cmd(cmd, tokken, end_tokken, O_WRONLY | O_CREAT, 0);
+			cmd = redirect_command(cmd, tokken, end_tokken, O_WRONLY | O_CREAT, 0);
 	}
 	return (cmd);
 }
@@ -91,7 +91,7 @@ t_command	*parse_exec(char **ptr_scan, char *end_scan)
 	char	*tokken;
 	char	*end_tokken;
 	int		aux_tokken;
-	int		argc;
+	int		argc = 0;
 	t_execcmd	*cmd;
 	t_command	*ret;
 

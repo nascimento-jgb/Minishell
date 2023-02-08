@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:57 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/06 09:36:02 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:55:56 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 /*
 	|		returns		|
@@ -71,7 +71,6 @@ int	check_tokken(char *scan)
 int	skip_to_tokken(char **ptr_scan, char *end_scan, char *tokken)
 {
 	char	spaces[] = " \t\r\n\v";
-	char	symbols[] = "<|>&()";
 	char	*scan;
 
 	scan = *ptr_scan;
@@ -95,9 +94,9 @@ int	get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
 		*tkn = scan;
 	res = *scan;
 	//include all possible cases in a different function
-	res = check_tokken(&scan);
+	res = check_tokken(scan);
 	//possible cases above
-	while (scan < end_scan && ! ft_strchr(spaces, *scan) && ft_strchr(symbols, *scan))
+	while (scan < end_scan && !ft_strchr(spaces, *scan) && !ft_strchr(symbols, *scan))
 		scan++;
 	if (end_tkn)
 		*end_tkn = scan;
@@ -107,4 +106,39 @@ int	get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
 	return (res);
 }
 
+t_command *null_terminate(t_command *cmd)
+{
+	t_execcmd		*exec_cmd;
+	t_pipecmd		*pipe_cmd;
+	t_redirectcmd	*redir_cmd;
+	t_andcmd		*and_cmd;
+	int				i;
 
+	i = 0;
+	if (cmd == 0)
+		return (0);
+	if (cmd->command_type == PIPE)
+	{
+		pipe_cmd = (t_pipecmd *)cmd;
+		null_terminate(pipe_cmd->left);
+		null_terminate(pipe_cmd->right);
+	}
+	else if (cmd->command_type == REDIRECT)
+	{
+		redir_cmd = (t_redirectcmd *)cmd;
+		null_terminate(redir_cmd->cmd);
+		*redir_cmd->exit_file = 0;
+	}
+	else if (cmd->command_type == EXEC)
+	{
+		exec_cmd = (t_execcmd *)cmd;
+		while (exec_cmd->argv[i])
+			exec_cmd->eargv[i++] = 0;
+	}
+	else if (cmd->command_type == OPERATORAND)
+	{
+		and_cmd = (t_andcmd *)cmd;
+		null_terminate(and_cmd->cmd);
+	}
+	return (cmd);
+}
