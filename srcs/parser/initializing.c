@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/06 09:36:54 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:51:22 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 t_command	*pipe_command(t_command *left_param, t_command *right_param)
 {
@@ -35,6 +35,7 @@ t_command	*redirect_command(t_command *subcmd, char *file, char *exit_file, int 
 		exit_message("Error.\n"); // doube check if exit can be done at this point of the program
 	memset(cmd, 0, sizeof(*cmd));
 	cmd->type = REDIRECT;
+	cmd->cmd =  subcmd;
 	cmd->file = file;
 	cmd->exit_file = exit_file;
 	cmd->mode = mode;

@@ -5,106 +5,114 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 09:29:57 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/06 09:36:02 by jonascim         ###   ########.fr       */
+/*   Created: 2023/02/03 09:29:59 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/08 09:58:32 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-/*
-	|		returns		|
-	(		returns		(
-	)		returns		)
-	<		returns		<
-	<<		returns		-
-	>		returns		>
-	>>		returns		+
-	&		returns		&
-	&&		returns		=
-	(end)	returns		0
-	others	returns		a
-*/
-
-// edit this functions as a pointer to function
-int	check_tokken(char *scan)
+t_command	*parse_command(char *scan)
 {
-	int	res;
+	char		*end_scan;
+	t_command	*cmd;
 
-	if (*scan == 0)
-		res = 0;
-	else if (*scan == '|')
-		res = '|';
-	else if (*scan == '(')
-		res = '(';
-	else if (*scan == ')')
-		res = ')';
-	else if (*scan == '>')
-		if (++*scan == '>')
-		{
-			res = '+';
-			scan++;
-		}
-		else
-			res = '>';
-	else if (*scan == '<')
-		if (++*scan == '<')
-		{
-			res = '-';
-			scan++;
-		}
-		else
-			res = '<';
-	else if (*scan == '&')
-		if (++*scan == '&')
-		{
-			res = '=';
-			scan++;
-		}
-		else
-			res = '&';
-	else
-		res = 'a';
-	return (res);
+	end_scan = scan + ft_strlen(scan);
+	cmd = parse_line(&scan, end_scan);
+	skip_to_tokken(&scan, end_scan, "");
+	if (scan != end_scan)
+		exit_message("Syntax error.\n");
+	null_terminate(cmd);
+	return (cmd);
 }
 
-int	skip_to_tokken(char **ptr_scan, char *end_scan, char *tokken)
+t_command	*parse_line(char **ptr_scan, char *end_scan)
 {
-	char	spaces[] = " \t\r\n\v";
-	char	symbols[] = "<|>&()";
-	char	*scan;
+	t_command	*cmd;
 
-	scan = *ptr_scan;
-	while (scan < end_scan && ft_strchr(spaces, *scan))
-		scan++;
-	*ptr_scan = scan;
-	return (*scan && ft_strchr(tokken, *scan));
+	cmd = parse_pipe(ptr_scan, end_scan);
+	while (skip_to_tokken(ptr_scan, end_scan, "&&"))
+	{
+		get_tokken(ptr_scan, end_scan, 0, 0);
+		cmd = and_command(cmd);
+	}
+	return (cmd);
 }
 
-int	get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
+t_command	*parse_pipe(char **ptr_scan, char *end_scan)
 {
-	char	spaces[] = " \t\r\n\v";
-	char	symbols[] = "<|>&()";
-	char	*scan;
-	int		res;
+	t_command	*cmd;
 
-	scan = *ptr_scan;
-	while (scan < end_scan && ft_strchr(spaces, *scan))
-		scan++;
-	if (tkn)
-		*tkn = scan;
-	res = *scan;
-	//include all possible cases in a different function
-	res = check_tokken(&scan);
-	//possible cases above
-	while (scan < end_scan && ! ft_strchr(spaces, *scan) && ft_strchr(symbols, *scan))
-		scan++;
-	if (end_tkn)
-		*end_tkn = scan;
-	while (scan < end_scan && ft_strchr(spaces, *scan))
-		scan++;
-	*ptr_scan = scan;
-	return (res);
+	cmd =  parse_exec(ptr_scan, end_scan);
+	if (skip_to_tokken(ptr_scan, end_scan, "|"))
+	{
+		get_tokken(ptr_scan, end_scan, 0, 0);
+		cmd = pipe_command(cmd, parse_pipe(ptr_scan, end_scan));
+	}
+	return (cmd);
 }
 
+t_command	*parse_redir(t_command *cmd, char **ptr_scan, char *end_scan)
+{
+	char	*tokken;
+	char	*end_tokken;
+	int		aux_tokken;
 
+	while (skip_to_tokken(ptr_scan, end_scan, "<>"))
+	{
+		aux_tokken = get_tokken(ptr_scan, end_scan, 0, 0);
+		if (get_tokken(ptr_scan, end_scan, &tokken, &end_tokken) != 'a')
+			exit_message(" Error - missing file for redirection.\n");
+		if (aux_tokken == '<' || aux_tokken == '-') // redirections must be checked - means <<
+			cmd = redirect_command(cmd, tokken, end_tokken, O_RDONLY, 0);
+		else if (aux_tokken == '>' || aux_tokken == '+') // redirections must be checked
+			cmd = redirect_command(cmd, tokken, end_tokken, O_WRONLY | O_CREAT, 0);
+	}
+	return (cmd);
+}
+
+t_command	*parse_parenthesis(char **ptr_scan, char *end_scan)
+{
+	t_command	*cmd;
+
+	if (!skip_to_tokken(ptr_scan, end_scan,  "("))
+		exit_message("parse_parathesis() error.\n");
+	get_tokken(ptr_scan, end_scan, 0, 0);
+	cmd = parse_line(ptr_scan, end_scan);
+	if (!skip_to_tokken(ptr_scan, end_scan,  ")"))
+		exit_message("syntax error - missing ) .\n");
+	get_tokken(ptr_scan, end_scan, 0, 0);
+	cmd = parse_redir(cmd, ptr_scan, end_scan);
+	return (cmd);
+}
+
+t_command	*parse_exec(char **ptr_scan, char *end_scan)
+{
+	char	*tokken;
+	char	*end_tokken;
+	int		aux_tokken;
+	int		argc = 0;
+	t_execcmd	*cmd;
+	t_command	*ret;
+
+	if(skip_to_tokken(ptr_scan, end_scan, "("))
+		return (parse_parenthesis(ptr_scan, end_scan));
+	ret = exec_command();
+	cmd = (t_execcmd *)ret;
+	while (!skip_to_tokken(ptr_scan, end_scan, "|)&"))
+	{
+		if ((aux_tokken = get_tokken(ptr_scan, end_scan, &tokken, &end_tokken)) == 0)
+			break;
+		if (aux_tokken != 'a')
+			exit_message("Syntax error indetified.\n");
+		cmd->argv[argc] = tokken;
+		cmd->eargv[argc] = end_tokken;
+		argc++;
+		if (argc >= MAXARGS)
+			exit_message("Too many arguments.\n");
+		ret = parse_redir(ret, ptr_scan, end_scan);
+	}
+	cmd->argv[argc] = 0;
+	cmd->eargv[argc] = 0;
+	return(ret);
+}

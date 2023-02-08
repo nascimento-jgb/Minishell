@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:04:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/26 17:36:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/08 08:48:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	open_shell(void)
 {
 	ft_printf("\n\n----------------------------------------------\n\n");
-	ft_printf("\t\tTHis is minishell\t\t\n");
+	ft_printf("\t\tThis is minishell\t\t\n");
 	ft_printf("\tUse it at your own risk\t\n");
 	ft_printf("\n\n----------------------------------------------\n\n");
 }
