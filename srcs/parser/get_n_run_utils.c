@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/08 10:13:52 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:39:18 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void	run_exec(t_execcmd *exec_cmd, t_command *cmd)
 	if (exec_cmd->argv[0] == 0)
 		exit(1);
 	execv(exec_cmd->argv[0], exec_cmd->argv);
-	//exit_message("exec() failed\n");
+	exit_message("exec() failed\n");
 }
