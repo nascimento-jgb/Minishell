@@ -6,33 +6,43 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 18:08:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:16:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+int	global_signal = 1;
+
 void	handle_sigcount(int sig)
 {
+	ft_printf("signal: %d\n", sig);
 	if (sig == SIGINT)
 	{
-		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("\n", 2);
 		rl_replace_line("", 0);
 		rl_on_new_line();
+		rl_redisplay();
+	}
+	else if (sig == SIGQUIT)
+	{
+		ft_printf("sigquit detected\n");
+		global_signal = 0;
 		rl_redisplay();
 	}
 
 }
 
-void	ms_signals(void)
+void	ms_signals(t_minishell *minishell)
 {
 	struct sigaction sa;
 	sa.__sigaction_u.__sa_handler = &handle_sigcount;
 	sa.sa_flags = SA_RESTART;
-	if (sigaction(SIGINT, &sa, NULL) == (int)SIG_ERR)
-		ft_putendl_fd("Failed to handle the interrupt signal", 2);
-	// if (!signalDetect)
-	// 	minishell->signalDetect = 0;
-	// if (!signal(SIGINT, &handle_sigcount))
-	// 	minishell->signalDetect = 0;
+	sigaction(SIGINT, &sa, NULL);
+	sigaction(SIGQUIT, &sa, NULL);
+	if (!global_signal)
+	{
+		global_signal = 1;
+		minishell->signalDetect = 0;
+	}
 }

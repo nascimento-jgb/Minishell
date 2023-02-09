@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 13:56:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:16:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	prompt(t_minishell *minishell)
 {
 	while (minishell->signalDetect)
 	{
-		ms_signals();
+		ms_signals(minishell);
 		minishell->currentDir = get_dir();
 		if (!minishell->currentDir)
 			return (1);
@@ -32,9 +32,9 @@ int	prompt(t_minishell *minishell)
 			free(minishell->currentDir);
 			return (1);
 		}
-		if (fork_create() == 0)
-			run_command(parse_command(minishell->promptLine));
-		wait(NULL);
+		// if (fork_create() == 0)
+		// 	run_command(parse_command(minishell->promptLine));
+		// wait(NULL);
 		add_history(minishell->promptLine);
 		free_vars(minishell->currentDir, minishell->promptLine);
 	}
