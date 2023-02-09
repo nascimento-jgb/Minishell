@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/09 14:16:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:15:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ int	global_signal = 1;
 
 void	handle_sigcount(int sig)
 {
-	ft_printf("signal: %d\n", sig);
 	if (sig == SIGINT)
 	{
 		ft_putstr_fd("\n", 2);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
+		signal(SIGINT, SIG_IGN);
 	}
 	else if (sig == SIGQUIT)
 	{
-		ft_printf("sigquit detected\n");
 		global_signal = 0;
-		rl_redisplay();
 	}
 
 }
