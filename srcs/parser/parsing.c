@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:59 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 13:36:57 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/10 15:39:45 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ t_command	*parse_exec(char **ptr_scan, char *end_scan)
 		cmd->argv[argc] = tokken;
 		cmd->eargv[argc] = end_tokken;
 		argc++;
-		//printf("%d - %d\n", argc, aux_tokken);
+		printf("%d - %d\n", argc, aux_tokken);
 		if (argc >= MAXARGS)
 			exit_message("Too many arguments.\n");
 		ret = parse_redir(ret, ptr_scan, end_scan);
