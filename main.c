@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 09:40:51 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:07:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	main(int argc, char **argv, char **env)
 {
 	t_minishell	*minishell;
 
-	minishell = minishell_init(argc, argv, env);
+	(void)argc;
+	(void)argv;
+	minishell = minishell_init(env);
 	if (!minishell)
 		return (1);
 	open_shell();

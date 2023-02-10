@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 10:13:53 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:08:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include "structs.h"
 # include "defines.h"
 
-
 void		exit_message(char *error);
 void		open_shell(void);
 char		*get_dir(void);
@@ -36,7 +35,7 @@ void		ms_pwd(void);
 void		ms_echo(char *message, int flag);
 void		ms_env(t_vars *env);
 int			ms_exit(int error_code);
-t_minishell	*minishell_init(int argc, char **argv, char **env);
+t_minishell	*minishell_init(char **env);
 t_env		*env_init(char **env);
 void		clean_minishell(t_minishell *minishell);
 int			ms_export(t_minishell *minishell, char *path);
