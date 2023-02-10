@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/08 12:39:18 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:46:32 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ void	run_exec(t_execcmd *exec_cmd, t_command *cmd)
 	exec_cmd = (t_execcmd *)cmd;
 	if (exec_cmd->argv[0] == 0)
 		exit(1);
-	execv(exec_cmd->argv[0], exec_cmd->argv);
+	execve(exec_cmd->argv[0], exec_cmd->argv, (char *const *)getenv("HOME"));
 	exit_message("exec() failed\n");
+}
+
+void	run_line(t_linecmd *line_cmd, t_command *cmd)
+{
+	line_cmd = (t_linecmd *)cmd;
+	if (fork_create() == 0)
+		run_command(line_cmd->left);
+	wait(NULL);
+	run_command(line_cmd->right);
 }
