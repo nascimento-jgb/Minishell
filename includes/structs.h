@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 13:46:14 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:23:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_minishell
 	int		argc;
 	char	**argv;
 	char	*capturedLine;
+	char	*promptLine;
+	char	*currentDir;
 	int		signalDetect;
 }	t_minishell;
 

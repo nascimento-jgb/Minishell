@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 13:36:48 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:27:38 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	main(int argc, char **argv, char **env)
 {
 	t_minishell	*minishell;
 
-	minishell = minishell_init(argc, argv, env);
+	(void)argc;
+	(void)argv;
+	minishell = minishell_init(env);
 	if (!minishell)
 		return (1);
 	open_shell();
