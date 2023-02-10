@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/09 17:23:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:45:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	get_argc_argv(t_minishell *minishell ,char *str)
 
 int	prompt(t_minishell *minishell)
 {
-	while (minishell->signalDetect)
+	while (1)
 	{
 		ms_signals(minishell);
 		minishell->currentDir = get_dir();
@@ -51,9 +51,9 @@ int	prompt(t_minishell *minishell)
 			return (1);
 		}
 		get_argc_argv(minishell, minishell->promptLine);
-		if (fork_create() == 0)
-			run_command(parse_command(minishell->promptLine));
-		wait(NULL);
+		// if (fork_create() == 0)
+		//	run_command(parse_command(minishell->promptLine));
+		// wait(NULL);
 		add_history(minishell->promptLine);
 		free_vars(minishell);
 	}

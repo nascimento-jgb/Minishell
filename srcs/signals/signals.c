@@ -6,13 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/09 17:15:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:50:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	global_signal = 1;
 
 void	handle_sigcount(int sig)
 {
@@ -22,11 +20,10 @@ void	handle_sigcount(int sig)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		signal(SIGINT, SIG_IGN);
 	}
 	else if (sig == SIGQUIT)
 	{
-		global_signal = 0;
+		ft_printf("SIGQUIT detected\n");
 	}
 
 }
@@ -35,12 +32,8 @@ void	ms_signals(t_minishell *minishell)
 {
 	struct sigaction sa;
 	sa.__sigaction_u.__sa_handler = &handle_sigcount;
-	sa.sa_flags = SA_RESTART;
+	//sa.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
-	if (!global_signal)
-	{
-		global_signal = 1;
-		minishell->signalDetect = 0;
-	}
+	(void)minishell;
 }
