@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 16:24:01 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:57:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void		vars_delnode(t_vars *node);
 void		vars_remove_node(t_vars **list, t_vars *node);
 void		ms_signals(t_minishell *minishell);
 int			fork_create(void);
-
+int			vars_length(t_minishell *minishell);
+void		free_char_arr(char **arr);
+char		**env_to_arr(t_minishell *minishell);
 
 //initializer
 t_command	*pipe_cmd_init(t_command *left_param, t_command *right_param);
@@ -71,13 +73,13 @@ int			get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn);
 t_command	*null_terminate(t_command *cmd);
 
 //get and run commands
-void	run_command(t_command *cmd);
+void	run_command(t_command *cmd, t_minishell * minishell);
 
 //get and run commands utils
-void	run_pipe(t_pipecmd *pipe_cmd, t_command *cmd, int p[]);
-void	run_redirect(t_redirectcmd	*redir_cmd, t_command *cmd);
-void	run_andoperator(t_andcmd *and_operator, t_command *cmd);
-void	run_exec(t_execcmd *exec_cmd, t_command *cmd);
-void	run_line(t_linecmd *line_cmd, t_command *cmd);
+void	run_pipe(t_pipecmd *pipe_cmd, t_command *cmd, int p[], t_minishell *minishell);
+void	run_redirect(t_redirectcmd	*redir_cmd, t_command *cmd, t_minishell *minishell);
+void	run_andoperator(t_andcmd *and_operator, t_command *cmd, t_minishell *minishell);
+void	run_exec(t_execcmd *exec_cmd, t_command *cmd, t_minishell *minishell);
+void	run_line(t_linecmd *line_cmd, t_command *cmd, t_minishell *minishell);
 
 #endif

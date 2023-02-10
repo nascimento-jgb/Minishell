@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:14 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 16:34:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:00:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	run_command(t_command *cmd)
+void	run_command(t_command *cmd, t_minishell *minishell)
 {
 	t_pipecmd		*pipe_cmd = NULL;
 	t_redirectcmd	*redir_cmd = NULL;
@@ -24,15 +24,15 @@ void	run_command(t_command *cmd)
 	if (cmd == 0)
 		exit(1);
 	else if (cmd->command_type == PIPE)
-		run_pipe(pipe_cmd, cmd, p);
+		run_pipe(pipe_cmd, cmd, p, minishell);
 	else if (cmd->command_type == REDIRECT)
-		run_redirect(redir_cmd, cmd);
+		run_redirect(redir_cmd, cmd, minishell);
 	else if (cmd->command_type == OPERATORAND)
-		run_andoperator(and_operator, cmd);
+		run_andoperator(and_operator, cmd, minishell);
 	else if (cmd->command_type == EXEC)
-		run_exec(exec_cmd, cmd);
+		run_exec(exec_cmd, cmd, minishell);
 	else if (cmd->command_type == LINE)
-		run_line(line_cmd, cmd);
+		run_line(line_cmd, cmd, minishell);
 	else
 		exit_message("run_command() Error.\n");
 }
