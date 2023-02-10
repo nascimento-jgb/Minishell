@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/08 10:03:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:23:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-#include "defines.h"
+# include "defines.h"
 
 typedef struct s_vars
 {
@@ -34,24 +34,25 @@ typedef struct s_minishell
 	t_env	*env;
 	int		argc;
 	char	**argv;
+	char	*capturedLine;
 	char	*promptLine;
 	char	*currentDir;
 	int		signalDetect;
 }	t_minishell;
 
-typedef struct	s_command
+typedef struct s_command
 {
 	int	command_type;
 }	t_command;
 
-typedef struct	s_pipecmd
+typedef struct s_pipecmd
 {
 	int					type;
 	struct s_command	*left;
 	struct s_command	*right;
 }	t_pipecmd;
 
-typedef struct	s_redirectcmd
+typedef struct s_redirectcmd
 {
 	int					type;
 	char				*file;
@@ -68,10 +69,17 @@ typedef struct s_execcmd
 	char	*eargv[MAXARGS];
 }	t_execcmd;
 
-typedef struct	s_andcmd
+typedef struct s_andcmd
 {
 	int					type;
 	struct s_command	*cmd;
 }	t_andcmd;
+
+typedef struct s_linecmd
+{
+	int					type;
+	struct s_command	*left;
+	struct s_command	*right;
+}	t_linecmd;
 
 #endif

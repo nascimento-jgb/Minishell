@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/09 17:08:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:24:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int			fork_create(void);
 
 
 //initializer
-t_command	*pipe_command(t_command *left_param, t_command *right_param);
-t_command	*redirect_command(t_command *subcmd, char *file, char *exit_file, int mode, int fd);
-t_command	*exec_command(void);
-t_command	*and_command(t_command *subcmd);
+t_command	*pipe_cmd_init(t_command *left_param, t_command *right_param);
+t_command	*redirect_cmd_init(t_command *subcmd, char *file, char *exit_file, int mode, int fd);
+t_command	*exec_cmd_init(void);
+t_command	*and_cmd_init(t_command *subcmd);
+t_command	*line_cmd_init(t_command *left, t_command *right);
 
 //parser
 t_command	*parse_command(char *scan);
@@ -64,8 +65,8 @@ t_command	*parse_parenthesis(char **ptr_scan, char *end_scan);
 t_command	*parse_exec(char **ptr_scan, char *end_scan);
 
 //parsing utils
-int			check_tokken(char *scan);
-int			skip_to_tokken(char **ptr_scan, char *end_scan, char *tokken);
+int			check_tokken(char *scan, char *end_scan, char *spaces, char *symbols);
+int			skip_to(char **ptr_scan, char *end_scan, char *tokken);
 int			get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn);
 t_command	*null_terminate(t_command *cmd);
 
@@ -77,5 +78,6 @@ void	run_pipe(t_pipecmd *pipe_cmd, t_command *cmd, int p[]);
 void	run_redirect(t_redirectcmd	*redir_cmd, t_command *cmd);
 void	run_andoperator(t_andcmd *and_operator, t_command *cmd);
 void	run_exec(t_execcmd *exec_cmd, t_command *cmd);
+void	run_line(t_linecmd *line_cmd, t_command *cmd);
 
 #endif
