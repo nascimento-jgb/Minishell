@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:57 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 15:32:31 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:00:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
 	int		ret;
 
 	scan = *ptr_scan;
-	while (scan < end_scan && ft_strchr(spaces, *scan))
+	while (scan < end_scan && !ft_strchr(spaces, *scan))
 		scan++;
 	if (tkn)
 		*tkn = scan;

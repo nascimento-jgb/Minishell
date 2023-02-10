@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:59 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 16:34:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:04:53 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ t_command	*parse_exec(char **ptr_scan, char *end_scan)
 		cmd->argv[argc] = tokken;
 		cmd->eargv[argc] = end_tokken;
 		argc++;
+		ft_printf("token: %s endToken: %s", tokken, end_tokken);
 		printf("%d - %d\n", argc, aux_tokken);
 		if (argc >= MAXARGS)
 			exit_message("Too many arguments.\n");

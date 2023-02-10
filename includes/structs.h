@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 16:23:01 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:05:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_minishell
 	int		argc;
 	char	**argv;
 	char	*capturedLine;
-	char	*promptLine;
 	char	*currentDir;
 	int		signalDetect;
 }	t_minishell;

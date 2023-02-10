@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 16:58:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:16:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ void	run_andoperator(t_andcmd *and_operator, t_command *cmd, t_minishell *minish
 
 void	run_exec(t_execcmd *exec_cmd, t_command *cmd, t_minishell *minishell)
 {
-	char **arr;
+	char **env_arr;
 
-	arr = env_to_arr(minishell);
-	if (!arr)
+	env_arr = env_to_arr(minishell);
+	if (!env_arr)
 		return ;
 	exec_cmd = (t_execcmd *)cmd;
 	if (exec_cmd->argv[0] == 0)
 		exit(1);
-	execve(exec_cmd->argv[0], exec_cmd->argv, (char *const *)getenv(NULL));
+	execve(exec_cmd->argv[0], exec_cmd->argv, env_arr);
 	//exec(exec_cmd->argv[0], exec_cmd->argv);
 	exit_message("exec() failed\n");
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 17:01:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:05:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	free_vars(t_minishell *minishell)
 	int i;
 
 	free(minishell->currentDir);
-	free(minishell->promptLine);
+	free(minishell->capturedLine);
 	i = 0;
 	while (minishell->argv[i])
 		ft_strdel(&minishell->argv[i++]);
@@ -50,7 +50,7 @@ int	prompt(t_minishell *minishell)
 			free(minishell->currentDir);
 			return (1);
 		}
-		get_argc_argv(minishell, minishell->promptLine);
+		get_argc_argv(minishell, minishell->capturedLine);
 		if (fork_create() == 0)
 			run_command(parse_command(minishell->capturedLine), minishell);
 		wait(NULL);
