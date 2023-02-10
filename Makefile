@@ -14,13 +14,13 @@ PROMPT = open_shell.c get_directory.c prompt.c
 PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
 BUILTINS = cd.c pwd.c echo.c env.c export.c unset.c
 BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
-VARS = vars_new.c vars_addback.c vars_delnode.c vars_list_clear.c vars_removenode.c
+VARS = vars_new.c vars_addback.c vars_delnode.c vars_list_clear.c vars_removenode.c vars_length.c
 VARSDEST = $(addprefix ./vars/, $(VARS))
 SIGNALS = signals.c
 SIGNALSDEST = $(addprefix ./signals/, $(SIGNALS))
 PARSER = parsing_utils.c parsing.c initializing.c get_n_run.c get_n_run_utils.c
 PARSERDEST = $(addprefix ./parser/, $(PARSER))
-SRCS = handle_errors.c clean.c get_env.c minishell_init.c
+SRCS = handle_errors.c clean.c get_env.c minishell_init.c utils.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST) $(SIGNALSDEST) $(PARSERDEST))
 SANITIZER = -fsanitize=address
 all: $(NAME)

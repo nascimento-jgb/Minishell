@@ -6,11 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/02/10 13:36:35 by jonascim         ###   ########.fr       */
-=======
-/*   Updated: 2023/02/09 17:23:49 by andrferr         ###   ########.fr       */
->>>>>>> 665b83fdc226a9449b83fa192a8fdc8cad9fb303
+/*   Updated: 2023/02/10 16:40:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +44,18 @@ int	prompt(t_minishell *minishell)
 		minishell->currentDir = get_dir();
 		if (!minishell->currentDir)
 			return (1);
-<<<<<<< HEAD
-		minishell->capturedLine = readline(dir);
+		minishell->capturedLine = readline(minishell->currentDir);
 		if (!minishell->capturedLine)
-=======
-		minishell->promptLine = readline(minishell->currentDir);
-		if (!minishell->promptLine)
->>>>>>> 665b83fdc226a9449b83fa192a8fdc8cad9fb303
 		{
 			free(minishell->currentDir);
 			return (1);
 		}
 		get_argc_argv(minishell, minishell->promptLine);
 		if (fork_create() == 0)
-			run_command(parse_command(minishell->capturedLine));
+			run_command(parse_command(minishell->capturedLine), minishell);
 		wait(NULL);
-<<<<<<< HEAD
 		add_history(minishell->capturedLine);
-		free_vars(dir, minishell->capturedLine);
-=======
-		add_history(minishell->promptLine);
 		free_vars(minishell);
->>>>>>> 665b83fdc226a9449b83fa192a8fdc8cad9fb303
 	}
 	return (0);
 }

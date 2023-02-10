@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 11:26:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 16:56:09 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/10 16:45:21 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/10 16:56:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	clean_minishell(t_minishell *minishell)
+char **env_to_arr(t_minishell *minishell)
 {
-	if (minishell)
-	{
-		if (minishell->env)
-		{
-			if (minishell->env->vars_list)
-				vars_listclear(&minishell->env->vars_list);
-			free(minishell->env);
-		}
-		free(minishell);
-	}
-}
-
-void	free_char_arr(char **arr)
-{
+	char **arr;
+	t_vars *tmp;
 	int	i;
 
+	arr = ft_calloc(vars_length(minishell) + 1, sizeof(char *));
+	if (!arr)
+		return (0);
+	tmp = minishell->env->vars_list;
 	i = 0;
-	while (arr[i])
+	while (tmp)
 	{
-		ft_strdel(&arr[i]);
+		arr[i] = ft_strdup(tmp->path);
+		if (!arr[i])
+		{
+			free(arr);
+			return (NULL);
+		}
 		i++;
+		tmp = tmp->next;
 	}
-	free(arr);
+	arr[i] = NULL;
+	return (arr);
 }
