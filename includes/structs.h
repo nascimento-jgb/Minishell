@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 17:05:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/11 13:19:38 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,25 @@ typedef struct s_minishell
 	char	*capturedLine;
 	char	*currentDir;
 	int		signalDetect;
+	char	*cmd;
+	char	*paths;
+	char	**cmd_paths;
+	char	**cmd_args;
 }	t_minishell;
 
-typedef struct s_command
+typedef struct	s_command
 {
 	int	command_type;
 }	t_command;
 
-typedef struct s_pipecmd
+typedef struct	s_pipecmd
 {
 	int					type;
 	struct s_command	*left;
 	struct s_command	*right;
 }	t_pipecmd;
 
-typedef struct s_redirectcmd
+typedef struct	s_redirectcmd
 {
 	int					type;
 	char				*file;
@@ -68,7 +72,7 @@ typedef struct s_execcmd
 	char	*eargv[MAXARGS];
 }	t_execcmd;
 
-typedef struct s_andcmd
+typedef struct	s_andcmd
 {
 	int					type;
 	struct s_command	*cmd;

@@ -1,7 +1,7 @@
 NAME = minishell
 FLAGS = -Wall -Werror -Wextra
-READLIBH = -I /Users/andrferr/.brew/Cellar/readline/8.2.1/include
-READLIB = -lreadline -L /Users/andrferr/.brew/Cellar/readline/8.2.1/lib
+READLIBH = -I /Users/jonascim/.brew/Cellar/readline/8.2.1/include
+READLIB = -lreadline -L /Users/jonascim/.brew/Cellar/readline/8.2.1/lib
 LIBFT = libft.a
 LSRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c \
 ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \

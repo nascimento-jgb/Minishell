@@ -300,7 +300,7 @@ gettoken(char **ps, char *es, char **q, char **eq)
       s++;
     break;
   }
-  if(eq)`
+  if(eq)
     *eq = s;
 
   while(s < es && strchr(whitespace, *s))

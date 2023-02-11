@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 16:57:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/11 13:21:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ t_command	*parse_parenthesis(char **ptr_scan, char *end_scan);
 t_command	*parse_exec(char **ptr_scan, char *end_scan);
 
 //parsing utils
-int			check_tokken(char *scan, char *end_scan, char *spaces, char *symbols);
+// int			check_tokken(char *scan); //, char *end_scan, char *spaces, char *symbols
 int			skip_to(char **ptr_scan, char *end_scan, char *tokken);
-int			get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn);
+int			get_token(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn);
 t_command	*null_terminate(t_command *cmd);
 
 //get and run commands
@@ -81,5 +81,7 @@ void	run_redirect(t_redirectcmd	*redir_cmd, t_command *cmd, t_minishell *minishe
 void	run_andoperator(t_andcmd *and_operator, t_command *cmd, t_minishell *minishell);
 void	run_exec(t_execcmd *exec_cmd, t_command *cmd, t_minishell *minishell);
 void	run_line(t_linecmd *line_cmd, t_command *cmd, t_minishell *minishell);
+char	*check_path(char **envp);
+char	*get_command(char **paths, char *cmd);
 
 #endif

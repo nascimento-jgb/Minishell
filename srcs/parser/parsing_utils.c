@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:57 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 18:00:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:16:14 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,70 +27,6 @@
 	others	returns		a
 */
 
-// edit this functions as a pointer to function
-int	check_tokken(char *scan, char *end_scan, char *spaces, char *symbols)
-{
-	int	res;
-
-	if (*scan == 0)
-		res = 0;
-	else if (*scan == '|')
-	{
-		res = '|';
-		scan++;
-	}
-	else if (*scan == '(')
-	{
-		res = '(';
-		scan++;
-	}
-	else if (*scan == ')')
-	{
-		res = ')';
-		scan++;
-	}
-	else if (*scan == '>')
-	{
-		res = '>';
-		scan++;
-		if (*scan == '>')
-		{
-			res = '+';
-			scan++;
-		}
-	}
-	else if (*scan == '<')
-	{
-		res = '<';
-		scan++;
-		if (*scan == '<')
-		{
-			res = '-';
-			scan++;
-		}
-	}
-	else if (*scan++ == '&')
-	{
-		res = '&';
-		scan++;
-		if (*scan == '&')
-		{
-			res = '=';
-			scan++;
-		}
-	}
-	else if (*scan++ == ';')
-	{
-		res = ';';
-		scan++;
-	}
-	else
-		res = 'a';
-	while (scan < end_scan && !ft_strchr(spaces, *scan) && !ft_strchr(symbols, *scan))
-		scan++;
-	return (res);
-}
-
 int	skip_to(char **ptr_scan, char *end_scan, char *tokken)
 {
 	char	spaces[] = " \t\r\n\v";
@@ -103,7 +39,7 @@ int	skip_to(char **ptr_scan, char *end_scan, char *tokken)
 	return (*scan && ft_strchr(tokken, *scan));
 }
 
-int	get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
+int	get_token(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
 {
 	char	spaces[] = " \t\r\n\v";
 	char	symbols[] = "<|>&();";
@@ -111,14 +47,32 @@ int	get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
 	int		ret;
 
 	scan = *ptr_scan;
-	while (scan < end_scan && !ft_strchr(spaces, *scan))
+	while (scan < end_scan && ft_strchr(spaces, *scan))
 		scan++;
 	if (tkn)
 		*tkn = scan;
 	ret = *scan;
-	//include all possible cases in a different function
-	ret = check_tokken(scan, end_scan, spaces, symbols);
-	//possible cases above
+	if (*scan == 0)
+	{
+
+	}
+	else if (*scan == '|' || *scan == '(' || *scan == ')' || *scan == ';' || *scan == '&' || *scan == '<')
+		scan++;
+	else if (*scan == '>')
+	{
+		scan++;
+		if (*scan == '>')
+		{
+			ret = '+';
+			scan++;
+		}
+	}
+	else
+	{
+		ret = 'a';
+		while (scan < end_scan && !ft_strchr(spaces, *scan) && !ft_strchr(symbols, *scan))
+			scan++;
+	}
 	if (end_tkn)
 		*end_tkn = scan;
 	while (scan < end_scan && ft_strchr(spaces, *scan))
@@ -126,6 +80,7 @@ int	get_tokken(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn)
 	*ptr_scan = scan;
 	return (ret);
 }
+
 
 t_command	*null_terminate(t_command *cmd)
 {
