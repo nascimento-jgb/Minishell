@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:57 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/11 10:16:14 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:04:55 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,24 +100,24 @@ t_command	*null_terminate(t_command *cmd)
 		null_terminate(pipe_cmd->left);
 		null_terminate(pipe_cmd->right);
 	}
-	if (cmd->command_type == REDIRECT)
+	else if (cmd->command_type == REDIRECT)
 	{
 		redir_cmd = (t_redirectcmd *)cmd;
 		null_terminate(redir_cmd->cmd);
 		*redir_cmd->exit_file = 0;
 	}
-	if (cmd->command_type == EXEC)
+	else if (cmd->command_type == EXEC)
 	{
 		exec_cmd = (t_execcmd *)cmd;
 		while (exec_cmd->argv[i])
 			exec_cmd->eargv[i++] = 0;
 	}
-	if (cmd->command_type == OPERATORAND)
+	else if (cmd->command_type == OPERATORAND)
 	{
 		and_cmd = (t_andcmd *)cmd;
 		null_terminate(and_cmd->cmd);
 	}
-	if (cmd->command_type == LINE)
+	else if (cmd->command_type == LINE)
 	{
 		line_cmd = (t_linecmd *)cmd;
 		null_terminate(line_cmd->left);

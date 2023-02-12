@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/11 13:21:02 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:15:13 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	run_exec(t_execcmd *exec_cmd, t_command *cmd, t_minishell *minishell)
 	minishell->cmd = get_command(minishell->cmd_paths, minishell->cmd_args[0]);
 	if (execve(minishell->cmd, exec_cmd->argv, env_arr) == -1)
 		exit_message("execve() failed\n");
+	exit(0);
 }
 
 void	run_line(t_linecmd *line_cmd, t_command *cmd, t_minishell *minishell)

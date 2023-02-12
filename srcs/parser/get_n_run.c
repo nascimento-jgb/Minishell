@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_n_run.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:14 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 17:00:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:18:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void	run_command(t_command *cmd, t_minishell *minishell)
 		run_line(line_cmd, cmd, minishell);
 	else
 		exit_message("run_command() Error.\n");
+	exit(0);
 }
