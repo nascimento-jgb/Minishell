@@ -6,12 +6,12 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 13:59:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:04:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-int a;
+
 void	handle_sigcount(int sig)
 {
 	if (sig == SIGINT)
