@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 13:19:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:11:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_minishell
 	t_env	*env;
 	int		argc;
 	char	**argv;
+	char	**env_arr;
 	char	*capturedLine;
 	char	*currentDir;
 	int		signalDetect;

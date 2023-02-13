@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/11 10:21:15 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:14:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ static void	free_vars(t_minishell *minishell)
 	free(minishell->currentDir);
 	free(minishell->capturedLine);
 	i = 0;
-	while (minishell->argv[i])
-		ft_strdel(&minishell->argv[i++]);
-	free(minishell->argv);
+	free_char_arr(minishell->argv);
+	free_char_arr(minishell->env_arr);
 	minishell->argc = 0;
 }
 
