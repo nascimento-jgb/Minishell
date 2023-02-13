@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:26:02 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 13:08:24 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:14:44 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	clean_minishell(t_minishell *minishell)
 			free(minishell->env);
 		}
 		if (minishell->last_cmd)
-			ft_strdel(minishell->last_cmd);
+			ft_strdel(&minishell->last_cmd);
 		if (minishell->cmd)
-			ft_strdel(minishell->cmd);
+			ft_strdel(&minishell->cmd);
 		free(minishell);
 	}
 }
