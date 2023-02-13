@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/13 09:38:08 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:19:08 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	run_exec(t_execcmd *exec_cmd, t_command *cmd, t_minishell *minishell)
 	minishell->cmd_paths = ft_split(minishell->paths, ':');
 	minishell->cmd_args = ft_split(exec_cmd->argv[0], ' ');
 	minishell->cmd = get_command(minishell->cmd_paths, minishell->cmd_args[0]);
+	write(1, "#", 1);
 	if (execve(minishell->cmd, exec_cmd->argv, env_arr) == -1)
 		exit_message("execve() failed\n");
 	exit(0);
