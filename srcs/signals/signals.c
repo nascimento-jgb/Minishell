@@ -6,12 +6,12 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/10 13:50:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:59:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
+int a;
 void	handle_sigcount(int sig)
 {
 	if (sig == SIGINT)
@@ -21,19 +21,13 @@ void	handle_sigcount(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	else if (sig == SIGQUIT)
-	{
-		ft_printf("SIGQUIT detected\n");
-	}
-
 }
 
 void	ms_signals(t_minishell *minishell)
 {
 	struct sigaction sa;
 	sa.__sigaction_u.__sa_handler = &handle_sigcount;
-	//sa.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &sa, NULL);
-	sigaction(SIGQUIT, &sa, NULL);
+	signal(SIGQUIT, SIG_IGN);
 	(void)minishell;
 }

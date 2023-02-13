@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 13:14:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:19:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_minishell
 	char	**cmd_paths;
 	char	**cmd_args;
 	char	*last_cmd;
+	int		last_exit_code;
 }	t_minishell;
 
 typedef struct	s_command
