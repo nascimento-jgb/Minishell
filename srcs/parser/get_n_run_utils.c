@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/12 14:15:13 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:38:08 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	run_andoperator(t_andcmd *and_operator, t_command *cmd, t_minishell *minish
 
 void	run_exec(t_execcmd *exec_cmd, t_command *cmd, t_minishell *minishell)
 {
-	char **env_arr;
-	// int i = 0;
+	char	**env_arr;
 
 	env_arr = env_to_arr(minishell);
 	if (!env_arr)
@@ -66,8 +65,6 @@ void	run_exec(t_execcmd *exec_cmd, t_command *cmd, t_minishell *minishell)
 	exec_cmd = (t_execcmd *)cmd;
 	if (exec_cmd->argv[0] == 0)
 		exit(1);
-	// while (env_arr[i])
-	// 	ft_printf("%s\n", env_arr[i++]);
 	minishell->paths = check_path(env_arr);
 	minishell->cmd_paths = ft_split(minishell->paths, ':');
 	minishell->cmd_args = ft_split(exec_cmd->argv[0], ' ');

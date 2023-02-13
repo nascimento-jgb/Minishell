@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/11 13:21:01 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 10:30:34 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,14 @@ t_command	*parse_parenthesis(char **ptr_scan, char *end_scan);
 t_command	*parse_exec(char **ptr_scan, char *end_scan);
 
 //parsing utils
-// int			check_tokken(char *scan); //, char *end_scan, char *spaces, char *symbols
 int			skip_to(char **ptr_scan, char *end_scan, char *tokken);
 int			get_token(char **ptr_scan, char *end_scan, char **tkn, char **end_tkn);
 t_command	*null_terminate(t_command *cmd);
 
+//check builtins
+void		builtins_check(t_minishell *minishell);
 //get and run commands
-void	run_command(t_command *cmd, t_minishell * minishell);
+void		run_command(t_command *cmd, t_minishell * minishell);
 
 //get and run commands utils
 void	run_pipe(t_pipecmd *pipe_cmd, t_command *cmd, int p[], t_minishell *minishell);

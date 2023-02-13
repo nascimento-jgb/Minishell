@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:47:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/10 12:42:32 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:39:07 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_command	*pipe_cmd_init(t_command *left_param, t_command *right_param)
 
 	cmd = malloc(sizeof(*cmd));
 	if (!cmd)
-		exit_message("Error.\n"); // doube check if exit can be done at this point of the program
+		exit_message("Error.\n");
 	ft_memset(cmd, 0, sizeof(*cmd));
 	cmd->type = PIPE;
 	cmd->left = left_param;
@@ -32,7 +32,7 @@ t_command	*redirect_cmd_init(t_command *subcmd, char *file, char *exit_file, int
 
 	cmd = malloc(sizeof(*cmd));
 	if (!cmd)
-		exit_message("Error.\n"); // doube check if exit can be done at this point of the program
+		exit_message("Error.\n");
 	ft_memset(cmd, 0, sizeof(*cmd));
 	cmd->type = REDIRECT;
 	cmd->cmd = subcmd;

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 09:29:59 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/12 14:08:28 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 10:43:08 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,15 +113,7 @@ t_command	*parse_exec(char **ptr_scan, char *end_scan)
 			exit_message("Syntax error indetified.\n");
 		cmd->argv[argc] = token;
 		cmd->eargv[argc] = end_token;
-		// ft_printf(" token position: %s - argc: %d\n", cmd->argv[argc], argc);
-		// ft_printf(" end token position: %s -  argc: %d\n", cmd->eargv[argc], argc);
-		// ft_printf("token: %s endToken: %s\n", token, end_token);
-		// ft_printf("%d - %d\n", argc, aux_token);
 		argc++;
-		// ft_printf(" token position: %s - argc: %d\n", cmd->argv[argc], argc);
-		// ft_printf(" end token position: %s -  argc: %d\n", cmd->eargv[argc], argc);
-		// ft_printf("token: %s endToken: %s\n", token, end_token);
-		// ft_printf("%d - %d\n", argc, aux_token);
 		if (argc >= MAXARGS)
 			exit_message("Too many arguments.\n");
 		ret = parse_redir(ret, ptr_scan, end_scan);
