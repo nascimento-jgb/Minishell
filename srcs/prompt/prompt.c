@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 15:14:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:48:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ int	prompt(t_minishell *minishell)
 			return (1);
 		}
 		get_argc_argv(minishell, minishell->capturedLine);
-		if (fork_create() == 0)
-			run_command(parse_command(minishell->capturedLine), minishell);
-		wait(NULL);
+		builtins_check(minishell);
+		// if (fork_create() == 0)
+		// 	run_command(parse_command(minishell->capturedLine), minishell);
+		// wait(NULL);
 		add_history(minishell->capturedLine);
 		free_vars(minishell);
 	}

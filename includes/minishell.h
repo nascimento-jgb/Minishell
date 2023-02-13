@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/11 13:21:01 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:02:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			fork_create(void);
 int			vars_length(t_minishell *minishell);
 void		free_char_arr(char **arr);
 char		**env_to_arr(t_minishell *minishell);
-
+void		builtins_check(t_minishell *minishell);
 //initializer
 t_command	*pipe_cmd_init(t_command *left_param, t_command *right_param);
 t_command	*redirect_cmd_init(t_command *subcmd, char *file, char *exit_file, int mode, int fd);
