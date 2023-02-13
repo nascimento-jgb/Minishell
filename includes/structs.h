@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 08:44:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/11 13:19:38 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:06:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_minishell
 	char	*paths;
 	char	**cmd_paths;
 	char	**cmd_args;
+	char	*last_cmd:
 }	t_minishell;
 
 typedef struct	s_command
