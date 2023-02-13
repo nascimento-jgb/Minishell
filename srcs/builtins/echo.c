@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:40:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 18:04:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:14:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int check_double_quotes(char *path, int *nbr_quotes)
 
 	i = -1;
 	while (path[++i])
-		if (path[i] == '"')
+		if (path[i] == 34)
 			(*nbr_quotes)++;
 	if (*nbr_quotes == 0 || *nbr_quotes == 2)
 		return (*nbr_quotes);
