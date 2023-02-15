@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 17:25:59 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:30:47 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	prompt(t_minishell *minishell)
 		}
 		get_argc_argv(minishell, minishell->capturedLine);
 		builtins_check(minishell);
+		// if (fork_create() == 0)
+		// 	run_command(parse_command(minishell->capturedLine), minishell);
+		// wait(NULL);
 		add_history(minishell->capturedLine);
 		free_vars(minishell);
 	}
