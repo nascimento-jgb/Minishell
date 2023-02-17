@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   parse_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:56:27 by andrferr          #+#    #+#             */
-/*   Updated: 2022/10/28 12:16:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/17 11:41:32 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/17 12:18:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+char **argv_parser(char *str)
 {
-	size_t			i;
-	char			*a;
-
-	a = (char *)b;
-	i = 0;
-	while (i < len)
-	{
-		a[i] = (unsigned char) c;
-		i++;
-	}
-	return (b);
+	char **argv;
+	argv = NULL;
+	(void)str;
+	(void)argv;
+	return (argv);
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:37:13 by andrferr          #+#    #+#             */
-/*   Updated: 2022/12/27 19:47:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:59:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,6 @@ char	*ft_strrev(char *str);
 int		ft_isprime(int num);
 void	ft_strdel(char **str);
 void	ft_memdel(void **ptr);
+int		ft_words_count(char *s);
+int		ft_letter_count(char *s, char del);
 #endif

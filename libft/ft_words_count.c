@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_words_count.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:56:27 by andrferr          #+#    #+#             */
-/*   Updated: 2022/10/28 12:16:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/17 11:45:29 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/17 12:03:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_words_count(char *s)
 {
-	size_t			i;
-	char			*a;
+	int	count;
 
-	a = (char *)b;
-	i = 0;
-	while (i < len)
+	count = 0;
+	while (*s)
 	{
-		a[i] = (unsigned char) c;
-		i++;
+		if ((!ft_isspace(*s) && ft_isspace(*(s + 1)))
+			|| (!ft_isspace(*s) && *(s + 1) == '\0'))
+			count++;
+		s++;
 	}
-	return (b);
+	return (count);
 }

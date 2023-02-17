@@ -6,32 +6,21 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:40:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 18:14:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:22:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	remove_spaces(char *message, int nbr_quotes)
+static void	remove_spaces(char *message)
 {
-	int	len;
-	int i;
-
-	len = ft_strlen(message);
-	if (nbr_quotes)
-	{
-		len--;
-		message++;
-	}
-	i = 0;
-	while (i < len - 1)
+	while (*message)
 	{
 		if (!ft_isspace(*message))
 			ft_putchar(*message);
 		else if (ft_isspace(*message) && !ft_isspace(*(message + 1)))
 			ft_putchar(*message);
 		message++;
-		i++;
 	}
 }
 
@@ -61,7 +50,7 @@ void	ms_echo(char *message, int flag)
 		return ;
 	}
 	else
-		remove_spaces(message, nbr_quotes);
+		remove_spaces(message);
 	if (!flag)
 		ft_putchar('\n');
 }

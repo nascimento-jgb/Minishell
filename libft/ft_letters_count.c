@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_letters_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:56:27 by andrferr          #+#    #+#             */
-/*   Updated: 2022/10/28 12:16:18 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/17 11:56:20 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/17 12:04:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_letter_count(char *s, char del)
 {
-	size_t			i;
-	char			*a;
+	int	count;
 
-	a = (char *)b;
-	i = 0;
-	while (i < len)
+	count = 0;
+	if (del)
 	{
-		a[i] = (unsigned char) c;
-		i++;
+		while (*s && *s != del)
+		{
+			count++;
+			s++;
+		}
 	}
-	return (b);
+	else
+	{
+		while (*s)
+		{
+			count++;
+			s++;
+		}
+	}
+	return (count);
 }

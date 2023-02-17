@@ -20,8 +20,10 @@ SIGNALS = signals.c
 SIGNALSDEST = $(addprefix ./signals/, $(SIGNALS))
 PARSER = parsing_utils.c parsing.c initializing.c get_n_run.c get_n_run_utils.c check_builtins.c
 PARSERDEST = $(addprefix ./parser/, $(PARSER))
+ARGVPARSER = parse_argv.c
+ARGVPARSERDEST = $(addprefix ./argv_parser/, $(ARGVPARSER))
 SRCS = handle_errors.c clean.c get_env.c minishell_init.c utils.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST) $(SIGNALSDEST) $(PARSERDEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST) $(SIGNALSDEST) $(PARSERDEST) $(ARGVPARSERDEST))
 SANITIZER = -fsanitize=address
 all: $(NAME)
 
