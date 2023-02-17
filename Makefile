@@ -22,8 +22,10 @@ PARSER = parsing_utils.c parsing.c initializing.c get_n_run.c get_n_run_utils.c 
 PARSERDEST = $(addprefix ./parser/, $(PARSER))
 ARGVPARSER = parse_argv.c
 ARGVPARSERDEST = $(addprefix ./argv_parser/, $(ARGVPARSER))
+TOOLS = quotes.c
+TOOLSDEST = $(addprefix ./tools/, $(TOOLS))
 SRCS = handle_errors.c clean.c get_env.c minishell_init.c utils.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST) $(SIGNALSDEST) $(PARSERDEST) $(ARGVPARSERDEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST) $(SIGNALSDEST) $(PARSERDEST) $(ARGVPARSERDEST) $(TOOLSDEST))
 SANITIZER = -fsanitize=address
 all: $(NAME)
 

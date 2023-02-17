@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/17 11:20:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:21:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ static void	free_vars(t_minishell *minishell)
 	minishell->argc = 0;
 }
 
-static void	get_argc_argv(t_minishell *minishell ,char *str)
-{
-	int	i;
+// static void	get_argc_argv(t_minishell *minishell ,char *str)
+// {
+// 	int	i;
 
-	minishell->argv = ft_split(str, ' ');
-	i = 0;
-	while (minishell->argv[i])
-		i++;
-	minishell->argc = i;
-}
+// 	minishell->argv = ft_split(str, ' ');
+// 	i = 0;
+// 	while (minishell->argv[i])
+// 		i++;
+// 	minishell->argc = i;
+// }
 
 int	prompt(t_minishell *minishell)
 {
@@ -49,9 +49,13 @@ int	prompt(t_minishell *minishell)
 			free(minishell->currentDir);
 			return (1);
 		}
-		get_argc_argv(minishell, minishell->capturedLine);
-		int i = -1;
-		while (minishell->argv[++i])
+		if (argv_parser(minishell))
+		{
+			free_vars(minishell);
+			continue ;
+		}
+		//get_argc_argv(minishell, minishell->capturedLine);
+		for (int i = 0; i < minishell->argc; i++)
 			ft_printf("%s\n", minishell->argv[i]);
 		builtins_check(minishell);
 		add_history(minishell->capturedLine);
