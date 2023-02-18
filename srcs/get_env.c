@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:03:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 17:19:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:02:57 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "./includes2/minishell2.h"
 
 static int	total_env_vars(char **env)
 {

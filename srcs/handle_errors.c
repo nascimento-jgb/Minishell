@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:43:35 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 17:19:16 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:02:15 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../includes2/minishell2.h"
 
 void	exit_message(char *error)
 {

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vars_length.c                                      :+:      :+:    :+:   */
+/*   mini_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 16:47:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/18 17:02:54 by jonascim         ###   ########.fr       */
+/*   Created: 2023/02/15 11:28:43 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/18 17:01:06 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes2/minishell2.h"
+#include "../includes/minishell.h"
 
-int	vars_length(t_minishell *minishell)
+t_helper	g_var;
+
+int	main(int argc, char **argv, char **envp)
 {
-	t_vars *tmp;
-	int i;
-
-	if (!minishell->env->vars_list)
-		return (0);
-	i = 0;
-	tmp = minishell->env->vars_list;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	if (argc != 1 && argv)
+		return (1);
+	run_prompt(envp);
+	return (0);
 }

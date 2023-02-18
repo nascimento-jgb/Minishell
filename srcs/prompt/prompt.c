@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:38:39 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/15 10:30:47 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:03:12 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "./includes2/minishell2.h"
 
 static void	free_vars(t_minishell *minishell)
 {

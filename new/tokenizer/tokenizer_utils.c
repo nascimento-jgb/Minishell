@@ -1,0 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenizer_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 15:46:15 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/18 17:01:19 by jonascim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/minishell.h"
+
+void	unclsoe_quotes_error(void)
+{
+	g_var.error = TRUE;
+	g_var.exit_code = 22;
+	g_var.invalid_input = TRUE;
+	ft_putendl_fd("Unclose quotes.", STDERR_FILENO);
+}
+
+int	has_quotes_before_spaces(char *str)
+{
+	int	aux_double;
+	int	aux_single;
+	int	aux_space;
+
+	if (str[0] == DOUBLE_QUOTES || str[0] == SINGLE_QUOTES)
+		return (TRUE);
+	else
+	{
+		aux_space = ft_chrpos(str, SPACE_VALUE);
+		aux_double = ft_chrpos(str, DOUBLE_QUOTES);
+		aux_single = ft_chrpos(str, SINGLE_QUOTES);
+		if (aux_double == -1 && aux_single == -1)
+			return (FALSE);
+		if (aux_double != -1 && aux_space < aux_double)
+			if (aux_single == -1 || aux_space < aux_single)
+				return (FALSE);
+		if (aux_single != -1 && aux_space < aux_single)
+			if (aux_double == -1 || aux_space < aux_double)
+				return (FALSE);
+	}
+	return (TRUE);
+}
+
+int	skip_spaces(int i, int j, char *input)
+{
+	if ((i + j) < ft_strlen(input) && input[i + j] == SPACE_VALUE)
+	{
+		j++;
+		while ((i + j) < ft_strlen(input) && input[i + j]
+			&& input[i + j] == SPACE_VALUE)
+			j++;
+	}
+	return (j);
+}
+
+static void	update_save(char **save, t_list *char_list)
+{
+	char	*temp;
+
+	temp = ft_strjoin(*save, char_list->content);
+	free(*save);
+	*save = ft_calloc(ft_strlen(temp) + 1, sizeof(char));
+	ft_memcpy(*save, temp, ft_strlen(temp));
+	free(temp);
+}
+
+char	*join_list(t_list *char_list)
+{
+	char	*save;
+	int		i;
+
+	if (char_list)
+	{
+		save = ft_calloc(ft_strlen(char_list->content) + 1, sizeof(char));
+		i = 0;
+		while (char_list)
+		{
+			if (i == 0)
+				ft_memcpy(save, char_list->content, ft_strlen(char_list->content));
+			else
+				update_save(&save, char_list);
+			char_list = char_list->next;
+			i++;
+		}
+		return (save);
+	}
+	return (NULL);
+}

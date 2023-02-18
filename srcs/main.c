@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/13 09:46:26 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:01:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "./includes2/minishell2.h"
 
 int	main(int argc, char **argv, char **env)
 {

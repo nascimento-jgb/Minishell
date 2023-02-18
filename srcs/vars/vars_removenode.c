@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vars_removenode.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:53:56 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:25:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:02:44 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "./includes2/minishell2.h"
 
 static void	remove_middle(t_vars **list, t_vars *node)
 {

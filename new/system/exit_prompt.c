@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vars_length.c                                      :+:      :+:    :+:   */
+/*   exit_prompt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 16:47:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/18 17:02:54 by jonascim         ###   ########.fr       */
+/*   Created: 2023/02/18 14:05:43 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/18 14:40:49 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes2/minishell2.h"
+#include "../../includes/minishell.h"
 
-int	vars_length(t_minishell *minishell)
+void	exit_prompt(void)
 {
-	t_vars *tmp;
-	int i;
+	if (g_var.input)
+		free(g_var.input);
+	if (g_var.envp)
+		free(g_var.envp);
+	if (g_var.prompt_line)
+		free(g_var.prompt_line);
+	rl_clear_history();
+	exit(0);
+}
 
-	if (!minishell->env->vars_list)
-		return (0);
-	i = 0;
-	tmp = minishell->env->vars_list;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+void	check_eof(char *input)
+{
+	if (input)
+		return ;
+	printf("exit\n");
+	exit_prompt();
 }

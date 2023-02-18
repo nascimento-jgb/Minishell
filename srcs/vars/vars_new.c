@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vars_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:38:46 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/30 11:08:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:02:45 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "./includes2/minishell2.h"
 
 static int	validate_path(char *path)
 {

@@ -5,29 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 16:36:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/18 17:03:07 by jonascim         ###   ########.fr       */
+/*   Created: 2023/02/18 13:48:04 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/18 17:01:09 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes2/minishell2.h"
+#include "../../includes/minishell.h"
 
-void	handle_sigcount(int sig)
+void	new_line(int signal)
 {
-	if (sig == SIGINT)
-	{
-		ft_putstr_fd("\n", 2);
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
-	}
+	(void)signal;
+	g_var.exit_code = 130;
+	g_var.invalid_input = TRUE;
+	g_var.error = TRUE;
+	ft_putendln_fd("", g_var.initial_fd[OUT]);
 }
 
-void	ms_signals(t_minishell *minishell)
+void	quit_exec(int signal)
 {
-	struct sigaction sa;
-	sa.__sigaction_u.__sa_handler = &handle_sigcount;
-	sigaction(SIGINT, &sa, NULL);
-	signal(SIGQUIT, SIG_IGN);
-	(void)minishell;
+	(void)signal;
+	g_var.exit_code = 131;
+	g_var.error = TRUE;
+	g_var.invalid_input = TRUE;
+	ft_putendln_fd("Quit ", STDERR_FILENO);
+}
+
+void	new_prompt(int signal)
+{
+	(void)signal;
+	g_var.exit_code = 130;
+	ft_putendln_fd("", g_var.initial_fd[OUT]);
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
 }
