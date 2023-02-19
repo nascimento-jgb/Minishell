@@ -10,18 +10,20 @@ ft_strnstr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_strrchr.c ft_
 ft_power_of.c get_next_line.c ft_isspace.c ft_abs.c ft_min.c ft_max.c ft_strrev.c ft_isprime.c ft_strdel.c ft_memdel.c
 LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
-PROMPT = open_shell.c get_directory.c prompt.c
-PROMPTDEST = $(addprefix ./prompt/, $(PROMPT))
-BUILTINS = cd.c pwd.c echo.c env.c export.c unset.c exit.c
+SYSTEM = exec_cmd.c init_data.c prompt.c
+SYSTEMDEST = $(addprefix ./system/, $(SYSTEM))
+BUILTINS = cd_prompt.c echo_prompt.c env_prompt.c exit_prompt.c export_prompt.c pwd_prompt.c exec_builtin.c
 BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
-VARS = vars_new.c vars_addback.c vars_delnode.c vars_list_clear.c vars_removenode.c vars_length.c
-VARSDEST = $(addprefix ./vars/, $(VARS))
-SIGNALS = signals.c
-SIGNALSDEST = $(addprefix ./signals/, $(SIGNALS))
-PARSER = parsing_utils.c parsing.c initializing.c get_n_run.c get_n_run_utils.c check_builtins.c
-PARSERDEST = $(addprefix ./parser/, $(PARSER))
-SRCS = handle_errors.c clean.c get_env.c minishell_init.c utils.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(PROMPTDEST) $(BUILTINSDEST) $(VARSDEST) $(SIGNALSDEST) $(PARSERDEST))
+PIPE = pipe_args.c pipe_checker.c
+PIPEDEST = $(addprefix ./pipe/, $(PIPE))
+REDIRECT = here_doc.c redirect_args.c redirect_input_cleaning.c redirect.c
+REDIRECTDEST = $(addprefix ./redirect/, $(REDIRECT))
+TOKENIZER = clean_quotes.c replace_env_var.c split_args.c tokenizer_utils.c tokenizer.c
+TOKENIZERDEST = $(addprefix ./tokenizer/, $(TOKENIZER))
+UTILS = export_utils.c fd_utils.c is_all.c is_builtin.c libft_extra_utils.c pipe_utils.c signals.c
+UTILSDEST = $(addprefix ./utils/, $(UTILS))
+SRCS = main.c
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(SYSTEMDEST) $(BUILTINSDEST) $(PIPEDEST) $(REDIRECTDEST) $(TOKENIZERDEST) $(UTILSDEST))
 SANITIZER = -fsanitize=address
 all: $(NAME)
 

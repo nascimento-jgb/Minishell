@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pwd_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:28:43 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:45:24 by jonascim         ###   ########.fr       */
+/*   Created: 2023/02/19 14:15:27 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/19 14:17:13 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-t_helper	g_var;
-
-int	main(int argc, char **argv, char **envp)
+void	pwd_prompt(void)
 {
-	if (argc != 1 && argv)
-		return (1);
-	run_prompt(envp);
-	return (0);
+	char	*buffer;
+	char	*pwd;
+
+	buffer = NULL;
+	pwd = getcwd(buffer, 0);
+	printf("%s\n", pwd);
+	free(pwd);
+	g_var.exit_code = 0;
 }

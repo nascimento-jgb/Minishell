@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:39:36 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/18 16:46:55 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 14:31:31 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ typedef struct s_helper
 
 extern t_helper	g_var;
 
-// FUNTIONS -
+// FUNCTIONS -
 // SYSTEM
 char		**dup_env(char **envp);
 void		init_gvar_data(void);
 void		initial_message(void);
-void		check_eof(char *input);
+void		execute_general(char **input);
+void		exec_cmd(char **args);
 
 // TOKENIZER
 char		**tokenizer(char *input);
@@ -69,22 +70,53 @@ void		split_args(char **args, char *input);
 char		**replace_env_var(char **temp);
 char		**clean_quotes(char **temp);
 int			has_quotes_before_spaces(char *str);
-void		unclose_quotes_error(void);
+void		unclosed_quotes_error_msg(void);
 int			skip_spaces(int i, int j, char *input);
 static void	update_save(char **save, t_list *char_list);
 char		*join_list(t_list *char_list);
 
+//PIPE
+void		pipe_checker(void);
+int			increment_all_str_quotes(char *str, int i);
+
+//REDIRECT
+void		redirect(char **input);
+char		**redirect_args(char **temp);
+void		here_doc(char *eof);
+void		redirect_input_cleaning(char **args, char **input);
+
+//BUILTINS
+void		execute_builtin(char **args, int code);
+void		cd_prompt(char **args);
+void		export_prompt(char **args);
+void		exit_prompt(void);
+void		pwd_prompt(void);
+void		env_prompt(void);
+void		echo_prompt(char **args);
+void		check_eof(char *input);
 
 // UTILS
+void		pipe_stop(int signal);
+void		here_doc_stop(int signal);
+void		continue_add_pipe_arg(t_list **lst);
 void		new_prompt(int signal);
 void		quit_exec(int signal);
 void		new_line(int signal);
 int			is_all_dollar(char *str);
 int			is_all_blank(char *str);
 int			is_all_valid_history(char *str);
+int			is_valid_attribution(char *arg, char *next);
+int			is_builtin(char **args);
+int			is_exit_cmd(void);
+void		change_fd(int *fd);
+void		save_fd(int *fd);
+void		change_output(char *file, int flags);
+void		change_input(char *file, int flags);
 
 //EXTRA
 int			ft_chrpos(char *s, int c);
 void		ft_free_matrix(char **matrix);
-
+char		*ft_matrix_to_str(char **matrix);
+char		**ft_lst_to_matrix(t_list *lst);
+int			ft_chrqty(char *s, int c);
 #endif

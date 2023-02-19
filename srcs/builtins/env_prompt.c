@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:28:43 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:45:24 by jonascim         ###   ########.fr       */
+/*   Created: 2023/02/19 14:18:19 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/19 14:19:39 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-t_helper	g_var;
-
-int	main(int argc, char **argv, char **envp)
+void	env_prompt(void)
 {
-	if (argc != 1 && argv)
-		return (1);
-	run_prompt(envp);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (g_var.envp[i])
+		printf("%s\n", g_var.envp[i++]);
+	g_var.exit_code = 0;
 }
