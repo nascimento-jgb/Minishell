@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 14:57:46 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/18 17:01:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:17:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ static void	count_args(char *input)
 	while (i < ft_strlen(input) && input[i])
 	{
 		j = increment_quotes(i, input);
-		if ((i + j) < ft_strlen(input) && input[i + j] != DOUBLE_QUOTES && input[i + j] != SINGLE_QUOTES && input[i + j] != SPACE_VALUE)
+		if ((i + j) < ft_strlen(input)
+			&& input[i + j] != DOUBLE_QUOTES
+			&& input[i + j] != SINGLE_QUOTES
+			&& input[i + j] != SPACE_VALUE)
 			j = increment_count(i + j, SPACE_VALUE, input) - i;
 		g_var.args_num++;
 		j = skip_spaces(i, j, input);
@@ -69,16 +72,13 @@ char	**tokenizer(char *input)
 
 	g_var.args_num = 0;
 	if (input)
-	{
-		count_rgs(input);
-		args = ft_calloc(g_var.args_num + 1, sizeof(char *));
-		split_args(args, input);
-	}
-	else // double check allocation order in this function
-	{
+		count_args(input);
+	else
 		count_args(g_var.input);
-		args = ft_calloc(g_var.args_num + 1, sizeof(char *));
+	args = ft_calloc(g_var.args_num + 1, sizeof(char *));
+	if (input)
+		split_args(args, input);
+	else
 		split_args(args, g_var.input);
-	}
 	return (args);
 }

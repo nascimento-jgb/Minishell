@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 11:15:15 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:45:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:43:41 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ char	**redirect_args(char **temp)
 	i = 0;
 	redirect_args_list = NULL;
 	while (temp[i])
-		split_redirect_args(temp[i++], &redirect_args_list);
+	{
+		split_redirect_args(temp[i], &redirect_args_list);
+		i++;
+	}
 	args = ft_lst_to_matrix(redirect_args_list);
 	ft_lstclear(&redirect_args_list, free);
 	ft_free_matrix(temp);

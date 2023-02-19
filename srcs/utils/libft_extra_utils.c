@@ -6,11 +6,20 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 09:53:07 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:45:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:13:16 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	ft_free_ptr(void **ptr)
+{
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+}
 
 void	ft_free_matrix(char **matrix)
 {

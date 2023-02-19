@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 14:18:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 10:00:54 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:39:16 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*get_path(char *command)
 	int		i;
 
 	i = 0;
-	while (g_var.envp[i] && ft_strnstr(g_var.envp[i], "PATH=", 5) == 0)
+	while (g_var.envp[i] && ft_strnstr(g_var.envp[i], "PATH", 4) == 0)
 		i++;
 	if (!g_var.envp[i])
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:53:02 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:11:25 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:04:02 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,19 @@ static void	define_var(char *var)
 	aux = ft_calloc(len + 2, sizeof(char *));
 	i = 0;
 	while (i < len)
-		aux[i] = ft_strdup(g_var.envp[i++]);
+	{
+		aux[i] = ft_strdup(g_var.envp[i]);
+		i++;
+	}
 	aux[i] = ft_strdup(var);
 	ft_free_matrix(g_var.envp);
 	g_var.envp = ft_calloc(len + 2, sizeof(char *));
 	i = 0;
 	while (i < (len + 1))
-		g_var.envp[i] = ft_strdup(aux[i++]);
+	{
+		g_var.envp[i] = ft_strdup(aux[i]);
+		i++;
+	}
 	ft_free_matrix(aux);
 	g_var.exit_code = 0;
 }

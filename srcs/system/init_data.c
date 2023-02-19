@@ -6,11 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:49:27 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:32:12 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:03:00 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static char	*prompt_line_str(void)
 {
@@ -39,7 +39,7 @@ void	init_gvar_data(void)
 	g_var.input = NULL;
 }
 
-char	**dup_env(char **envp)
+char	**envp_dup(char **envp)
 {
 	int		len;
 	int		i;
@@ -51,7 +51,11 @@ char	**dup_env(char **envp)
 		len++;
 	aux = ft_calloc(len + 1, sizeof(char *));
 	while (i < len)
-		aux[i] = ft_strdup(envp[i++]);
+	{
+		aux[i] = ft_strdup(envp[i]);
+		i++;
+	}
+
 	aux[i] = NULL;
 	return (aux);
 }

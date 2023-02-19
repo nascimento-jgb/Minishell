@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:22:09 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 10:29:52 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:23:01 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	continue_add_pipe_arg(t_list **lst)
 			continue_add_pipe_arg(lst);
 		}
 		else
-			ft_lst_add_back(lst, ft_lstnew(ft_strdup(aux)));
+			ft_lstadd_back(lst, ft_lstnew(ft_strdup(aux)));
 		free(aux);
 		free(input);
 	}

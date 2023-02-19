@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 15:46:15 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:45:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:20:08 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	unclosed_quotes_error_msg(void)
 	g_var.error = TRUE;
 	g_var.exit_code = 22;
 	g_var.invalid_input = TRUE;
-	ft_putendl_fd("Unclosed quotes.", STDERR_FILENO);
+	ft_putendl_fd("Unclosed quotes", STDERR_FILENO);
 }
 
-int	has_quotes_before_spaces(char *str)
+int	quotes_before_space(char *str)
 {
 	int	aux_double;
 	int	aux_single;
@@ -80,7 +80,8 @@ char	*join_list(t_list *char_list)
 		while (char_list)
 		{
 			if (i == 0)
-				ft_memcpy(save, char_list->content, ft_strlen(char_list->content));
+				ft_memcpy(save, char_list->content,
+					ft_strlen(char_list->content));
 			else
 				update_save(&save, char_list);
 			char_list = char_list->next;

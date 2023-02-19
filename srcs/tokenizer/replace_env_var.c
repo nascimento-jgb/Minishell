@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/18 17:00:15 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:27:43 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ static int	add_var(char *var, int len, t_list **char_list)
 	i = 0;
 	while (g_var.envp[i])
 	{
-		if (ft_memcmp(var, g_var.envp[i], len) == 0 && g_var.envp[i][len] == '=')
+		if (ft_memcmp(var, g_var.envp[i], len) == 0
+			&& g_var.envp[i][len] == '=')
 		{
 			if (g_var.envp[i][len + 1])
-				ft_lstadd_back(char_list, ft_lstnew(ft_substr(g_var.envp[i],len + 1, ft_strlen(g_var.envp[i]) - len - 1)));
+				ft_lstadd_back(char_list, ft_lstnew(ft_substr(g_var.envp[i],
+							len + 1, ft_strlen(g_var.envp[i]) - len - 1)));
 			else
 				ft_lstadd_back(char_list, ft_lstnew(ft_strjoin("", "")));
 			break ;
@@ -93,8 +95,10 @@ char	**replace_env_var(char **temp)
 	i = 0;
 	while (i < g_var.args_num)
 	{
-		char_list = NULL; // check if there is presence of single quotes at the beggining/end withou dollasign in the middle
-		if (((temp[i][0] == SINGLE_QUOTES || (temp[i][0] == SPACE_VALUE && temp[i][1] == SINGLE_QUOTES)) && temp[i][ft_strlen(temp[i]) - 1] == SINGLE_QUOTES) || ft_chrpos(temp[i], DOLLAR_SIGN) == -1)
+		char_list = NULL; // check if there is presence of single quotes at the beggining/end without dollasign in the middle
+		if (((temp[i][0] == SINGLE_QUOTES || (temp[i][0] == SPACE_VALUE
+				&& temp[i][1] == SINGLE_QUOTES)) && temp[i][ft_strlen(temp[i])
+				- 1] == SINGLE_QUOTES) || ft_chrpos(temp[i], DOLLAR_SIGN) == -1)
 			ft_lstadd_back(&char_list, ft_lstnew(ft_strdup(temp[i])));
 		else
 			iterate_and_replace(temp[i], &char_list);

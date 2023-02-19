@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:46:21 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:45:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:30:26 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	int	populate_list(char *temp, t_list **char_list, int i)
 	{
 		j = ft_chrpos(temp + 1, SINGLE_QUOTES);
 		if (j == -1)
-			throw_unclosed_quotes_error();
+			unclosed_quotes_error_msg();
 		else
 			ft_lstadd_back(char_list, ft_lstnew(ft_substr(temp, 1, j)));
 		i += j + 2;
@@ -28,7 +28,8 @@ static	int	populate_list(char *temp, t_list **char_list, int i)
 	else
 	{
 		j = i;
-		while (temp[j] != DOUBLE_QUOTES && temp[j] != SINGLE_QUOTES && temp[j] != '\0')
+		while (temp[j] != DOUBLE_QUOTES && temp[j] != SINGLE_QUOTES
+			&& temp[j] != '\0')
 			j++;
 		ft_lstadd_back(char_list, ft_lstnew(ft_substr(temp, 0, j)));
 		i += j;
@@ -52,7 +53,7 @@ static int	iterate_and_clean(char *temp, t_list **char_list)
 			if (j == -1)
 				unclosed_quotes_error_msg();
 			else
-				ft_lstadd_back(char_list, ft_lstsnew(ft_substr(temp, 1, j)));
+				ft_lstadd_back(char_list, ft_lstnew(ft_substr(temp, 1, j)));
 			i += j + 2;
 		}
 		else

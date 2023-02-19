@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:18:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:31:40 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 14:54:47 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ void	cd_prompt(char **args)
 	old_pwd = replace_env_var(tokenizer("$OLDPWD"));
 	home = replace_env_var(tokenizer("$HOME"));
 	exec_cd(args, home, pwd, old_pwd);
-	fr_free_matrix(home);
-	fr_free_matrix(pwd);
-	fr_free_matrix(old_pwd);
+	ft_free_matrix(home);
+	ft_free_matrix(pwd);
+	ft_free_matrix(old_pwd);
 
 }

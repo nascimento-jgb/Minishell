@@ -6,13 +6,13 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:32:13 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:15:00 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	execute_general(char	**input)
+void	execute_general(char **input)
 {
 	int		code;
 	char	**args;
@@ -51,7 +51,9 @@ static int	is_valid_input(char *input)
 
 	flag = FALSE;
 	check_eof(input);
-	if (input[0] == '\0' || is_all_blank(input))
+	if (input[0] == '\0')
+		return (FALSE);
+	if (is_all_blank(input))
 		return (FALSE);
 	aux = ft_strtrim(input, " \t");
 	temp = clean_quotes(tokenizer(aux));
@@ -68,10 +70,10 @@ void	run_prompt(char **envp)
 {
 	char	*aux;
 
-	g_var.envp = dup_envp(envp);
+	g_var.envp = envp_dup(envp);
 	g_var.exit_code = 0;
 	initial_message();
-	while (1)
+	while (TRUE)
 	{
 		init_gvar_data();
 		signal(SIGINT, new_prompt);

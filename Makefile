@@ -1,7 +1,8 @@
 NAME = minishell
 FLAGS = -Wall -Werror -Wextra
-READLIBH = -I /Users/jonascim/.brew/Cellar/readline/8.2.1/include
-READLIB = -lreadline -L /Users/jonascim/.brew/Cellar/readline/8.2.1/lib
+# READLIBH = -I ${HOME}/.brew/Cellar/readline/8.2.1/include/readline  $(READLIBH)
+#  -L ${HOME}/.brew/Cellar/readline/8.2.1/lib/
+READLIB = -lreadline
 LIBFT = libft.a
 LSRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c \
 ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
@@ -12,7 +13,7 @@ LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
 SYSTEM = exec_cmd.c init_data.c prompt.c
 SYSTEMDEST = $(addprefix ./system/, $(SYSTEM))
-BUILTINS = cd_prompt.c echo_prompt.c env_prompt.c exit_prompt.c export_prompt.c pwd_prompt.c exec_builtin.c
+BUILTINS = cd_prompt.c echo_prompt.c env_prompt.c exit_prompt.c export_prompt.c pwd_prompt.c unset_prompt.c exec_builtin.c
 BUILTINSDEST = $(addprefix ./builtins/, $(BUILTINS))
 PIPE = pipe_args.c pipe_checker.c
 PIPEDEST = $(addprefix ./pipe/, $(PIPE))
@@ -22,15 +23,15 @@ TOKENIZER = clean_quotes.c replace_env_var.c split_args.c tokenizer_utils.c toke
 TOKENIZERDEST = $(addprefix ./tokenizer/, $(TOKENIZER))
 UTILS = export_utils.c fd_utils.c is_all.c is_builtin.c libft_extra_utils.c pipe_utils.c signals.c
 UTILSDEST = $(addprefix ./utils/, $(UTILS))
-SRCS = main.c
+SRCS =
 SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(SYSTEMDEST) $(BUILTINSDEST) $(PIPEDEST) $(REDIRECTDEST) $(TOKENIZERDEST) $(UTILSDEST))
 SANITIZER = -fsanitize=address
 all: $(NAME)
 
-$(NAME): $(SRCSDEST) main.c
+$(NAME): $(SRCSDEST) mini_main.c
 	@make -C libft
 	@make bonus -C libft
-	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(READLIB) $(READLIBH)
+	cc $(FLAGS) -o $(NAME) mini_main.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(READLIB)
 
 clean:
 	rm -f $(LODEST) ./libft/*.o ./libft/ft_printf/*.o

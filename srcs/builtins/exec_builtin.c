@@ -6,13 +6,13 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:14:05 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:11:59 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:07:13 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	execute_builtin(char **args, int code)
+void	exec_builtin(char **args, int code)
 {
 	if (code == 1)
 	{

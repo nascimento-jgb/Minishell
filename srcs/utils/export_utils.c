@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:10:20 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:11:41 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:19:02 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	is_valid_attribution(char *arg, char *next)
 	while (i < j)
 	{
 		if (!(ft_isalpha(arg[i]) || ft_isdigit(arg[i]))
-			|| ft_is_all_digit(arg, j))
+			|| is_all_digit(arg, j))
 			return (export_error_msg(arg, FALSE));
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:05:39 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 10:29:43 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:05:29 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	iterate_pipe_args(char *str, t_list **lst)
 
 	i = 0;
 	j = 0;
-	while (i < ft_strlen(str) && str[i] && !g_var.invalid_input)
+	while (i < (int)ft_strlen(str) && str[i] && !g_var.invalid_input)
 	{
 		i = increment_all_str_quotes(str, i);
 		if (str[i] == '|')

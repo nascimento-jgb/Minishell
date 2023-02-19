@@ -6,13 +6,13 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:46:13 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:45:17 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:41:19 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	especial_case_fd(char *file, char *redirect)
+static void	special_case_fd(char *file, char *redirect)
 {
 	int	fd;
 
@@ -55,7 +55,7 @@ static void	exec_redirect(char *redirect, char *file)
 		change_input(file, O_RDONLY);
 }
 
-static int	is_valid_redirect(char **args)
+static int	is_valid_redirection(char **args)
 {
 	int	i;
 
@@ -64,8 +64,10 @@ static int	is_valid_redirect(char **args)
 	{
 		if (ft_chrqty(args[i], '>') > 0 || ft_chrqty(args[i], '<') > 0)
 		{
-			if ((args[i][0] == '>' || args[i][0] == '<') && ((ft_chrqty(args[i], '>') > 2 || ft_chrqty(args[i], '<') > 2)
-			|| (!args[i + 1] || ft_chrqty(args[i + 1], '>') > 0 || ft_chrqty(args[i + 1], '<') > 0)))
+			if ((args[i][0] == '>' || args[i][0] == '<') &&
+				((ft_chrqty(args[i], '>') > 2 || ft_chrqty(args[i], '<') > 2)
+				|| (!args[i + 1] || ft_chrqty(args[i + 1], '>') > 0
+					|| ft_chrqty(args[i + 1], '<') > 0)))
 			{
 				g_var.exit_code = 2;
 				return (FALSE);
@@ -95,7 +97,7 @@ void	redirect(char **input)
 			exec_redirect(args[i], args[i + 1]);
 			i++;
 		}
-		clean_redirect_input(args, input);
+		redirect_input_cleaning(args, input);
 	}
 	ft_free_matrix(args);
 }
