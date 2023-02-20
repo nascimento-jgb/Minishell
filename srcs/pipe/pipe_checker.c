@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 09:43:16 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 09:59:59 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:28:23 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ void	pipe_checker(void)
 	int		i;
 
 	i = 0;
+	// printf("HEY9\n");
 	args = pipe_args();
+	// printf("HEY10\n");
 	save_history(args);
 	while (args[i] && !g_var.invalid_input)
 	{
-		if (args[i + 1] && args[i +1][0] == '|')
+		if (args[i + 1] && args[i + 1][0] == '|')
 		{
 			save_actual_fd();
 			new_pipe(TRUE);
@@ -66,6 +68,7 @@ void	pipe_checker(void)
 			new_pipe(FALSE);
 			g_var.close_code = TRUE;
 		}
+		// printf("HEY11\n");
 		execute_general(&args[i]);
 		change_fd(g_var.actual_fd);
 		if (args[++i] && args[i][0] == '|')

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:05:39 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 08:55:39 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:58:29 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ static void	iterate_pipe_args(char *str, t_list **lst)
 
 	i = 0;
 	j = 0;
-	while (i < (int)ft_strlen(str) && str[i] && !g_var.invalid_input)
+	// printf("HEY15\n");
+	while (i < ft_strlen(str) && str[i] && !g_var.invalid_input)
 	{
 		i = increment_all_str_quotes(str, i);
+		// printf("HEY16\n");
 		if (str[i] == '|')
 		{
 			temp = ft_substr(str, j, i - j);
@@ -73,6 +75,7 @@ static void	iterate_pipe_args(char *str, t_list **lst)
 			ft_lstadd_back(lst, ft_lstnew(ft_strdup("|")));
 			j = i + 1;
 		}
+		i++;
 	}
 	add_last_pipe_arg(lst, str, i, j);
 }
@@ -83,7 +86,9 @@ char	**pipe_args(void)
 	t_list	*lst;
 
 	lst = NULL;
+	// printf("HEY12\n");
 	iterate_pipe_args(g_var.input, &lst);
+	// printf("HEY13\n");
 	if (lst == NULL || g_var.invalid_input)
 	{
 		args = ft_calloc(2, sizeof(char *));
@@ -93,5 +98,7 @@ char	**pipe_args(void)
 		args = ft_lst_to_matrix(lst);
 	if (lst)
 		ft_lstclear(&lst, free);
+	// printf("HEY14\n");
+	// printf("%s\n", args[0]);
 	return (args);
 }

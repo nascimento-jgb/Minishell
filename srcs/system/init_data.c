@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:49:27 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 15:03:00 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:28:35 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**envp_dup(char **envp)
 		aux[i] = ft_strdup(envp[i]);
 		i++;
 	}
-
 	aux[i] = NULL;
 	return (aux);
 }
