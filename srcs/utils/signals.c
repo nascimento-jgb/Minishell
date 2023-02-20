@@ -6,13 +6,11 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 13:48:04 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 17:38:59 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 09:16:12 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-// /Users/jonascim/.brew/Cellar/readline/8.2.1/include
-// /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/readline/
 
 void	pipe_stop(int signal)
 {

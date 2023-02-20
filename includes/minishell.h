@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:39:36 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 17:46:13 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 08:55:27 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 // INCLUDES
-# include "../libft/libft.h"
+# include "../srcs/libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/wait.h>

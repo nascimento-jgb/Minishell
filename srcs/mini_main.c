@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_d.c                                         :+:      :+:    :+:   */
+/*   mini_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 12:30:08 by andrferr          #+#    #+#             */
-/*   Updated: 2022/12/16 12:20:01 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/15 11:28:43 by jonascim          #+#    #+#             */
+/*   Updated: 2023/02/20 08:35:09 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../../libft.h"
+#include  "../includes/minishell.h"
 
-int	handle_d(va_list args, char c)
+t_helper	g_var;
+
+int	main(int argc, char **argv, char **envp)
 {
-	char	*str;
-	int		len;
-
-	str = ft_itoa(va_arg(args, int));
-	if (!str)
-		return (0);
-	ft_putstr(str);
-	len = ft_strlen(str);
-	free(str);
-	return (len);
+	if (argc != 1 && argv)
+		return (1);
+	run_prompt(envp);
+	return (0);
 }

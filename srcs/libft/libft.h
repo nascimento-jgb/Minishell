@@ -6,18 +6,15 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:37:13 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/19 15:36:28 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 08:50:48 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 30
-# endif
+
 # include <stdlib.h>
 # include <unistd.h>
-# include "ft_printf/includes/ft_printf.h"
 
 typedef struct s_list
 {
@@ -73,7 +70,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-char	*get_next_line(int fd);
 int		ft_isspace(char c);
 int		ft_abs(int num);
 int		ft_power_of(int num, int power);
