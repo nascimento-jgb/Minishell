@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:37:13 by andrferr          #+#    #+#             */
-<<<<<<< HEAD:libft/libft.h
-/*   Updated: 2023/02/17 11:59:46 by andrferr         ###   ########.fr       */
-=======
-/*   Updated: 2023/02/20 08:50:48 by jonascim         ###   ########.fr       */
->>>>>>> newparser:srcs/libft/libft.h
+/*   Updated: 2023/02/20 13:19:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

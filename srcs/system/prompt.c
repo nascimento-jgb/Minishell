@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 11:28:49 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:49:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	execute_general(char **input)
 		else
 			exec_cmd(redirect_args(args));
 	}
-	ft_free_matrix(args);
 }
 
 static void	exec_args(void)

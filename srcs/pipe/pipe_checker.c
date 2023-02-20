@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 09:43:16 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 11:28:23 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:36:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	pipe_checker(void)
 	i = 0;
 	// printf("HEY9\n");
 	args = pipe_args();
-	// printf("HEY10\n");
 	save_history(args);
 	while (args[i] && !g_var.invalid_input)
 	{

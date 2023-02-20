@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:05:39 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 10:58:29 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:44:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static void	iterate_pipe_args(char *str, t_list **lst)
 
 	i = 0;
 	j = 0;
-	// printf("HEY15\n");
+	//printf("HEY15\n");
 	while (i < ft_strlen(str) && str[i] && !g_var.invalid_input)
 	{
 		i = increment_all_str_quotes(str, i);
-		// printf("HEY16\n");
+		//printf("HEY16\n");
 		if (str[i] == '|')
 		{
 			temp = ft_substr(str, j, i - j);
