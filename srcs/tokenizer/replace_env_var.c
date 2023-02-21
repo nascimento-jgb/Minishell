@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/21 15:00:50 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:49:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ char	**replace_env_var(char **temp)
 	t_list	*char_list;
 	t_list	*aux;
 
+	//char_list = NULL;
 	args = ft_calloc(g_var.args_num + 1, sizeof(char *));
 	i = 0;
 	while (i < g_var.args_num)
@@ -108,11 +109,11 @@ char	**replace_env_var(char **temp)
 		else
 			iterate_and_replace(temp[i], &char_list);
 		args[i] = join_list(char_list);
+		ft_lstdelone(char_list, free);
 		i++;
 	}
 	args[i] = NULL;
 	char_list = aux;
-	ft_lstclear(&char_list, free);
 	ft_free_matrix(temp);
 	return (args);
 }

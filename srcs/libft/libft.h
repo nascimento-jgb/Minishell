@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:37:13 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/20 13:19:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:09:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,6 @@ void	ft_strdel(char **str);
 void	ft_memdel(void **ptr);
 int		ft_words_count(char *s);
 int		ft_letter_count(char *s, char del);
+void	ft_lst_print(t_list *head);
+
 #endif
