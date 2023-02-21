@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 17:19:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:00:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ char	**replace_env_var(char **temp)
 	int		i;
 	char	**args;
 	t_list	*char_list;
+	t_list	*aux;
 
 	args = ft_calloc(g_var.args_num + 1, sizeof(char *));
 	i = 0;
@@ -99,13 +100,19 @@ char	**replace_env_var(char **temp)
 		if (((temp[i][0] == SINGLE_QUOTES || (temp[i][0] == SPACE_VALUE
 				&& temp[i][1] == SINGLE_QUOTES)) && temp[i][ft_strlen(temp[i])
 				- 1] == SINGLE_QUOTES) || ft_chrpos(temp[i], DOLLAR_SIGN) == -1)
-			ft_lstadd_back(&char_list, ft_lstnew(temp[i]));
+		{
+			ft_lstadd_back(&char_list, ft_lstnew(ft_strdup(temp[i])));
+			if (ft_lstsize(char_list) == 1)
+				aux = char_list;
+		}
 		else
 			iterate_and_replace(temp[i], &char_list);
 		args[i] = join_list(char_list);
 		i++;
 	}
 	args[i] = NULL;
+	char_list = aux;
+	ft_lstclear(&char_list, free);
 	ft_free_matrix(temp);
 	return (args);
 }

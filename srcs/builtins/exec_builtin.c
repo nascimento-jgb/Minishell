@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:14:05 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 16:49:45 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:02:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	exec_builtin(char **args, int code)
 		unset_prompt(args);
 	if (code == 7)
 		cd_prompt(args);
+	ft_free_matrix(args);
 }
