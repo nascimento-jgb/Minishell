@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 10:02:49 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:53:48 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ char	**replace_env_var(char **temp)
 	int		i;
 	char	**args;
 	t_list	*char_list;
+	t_list	*aux;
 
+	//char_list = NULL;
 	args = ft_calloc(g_var.args_num + 1, sizeof(char *));
 	i = 0;
 	while (i < g_var.args_num)
@@ -99,7 +101,11 @@ char	**replace_env_var(char **temp)
 		if (((temp[i][0] == SINGLE_QUOTES || (temp[i][0] == SPACE_VALUE
 				&& temp[i][1] == SINGLE_QUOTES)) && temp[i][ft_strlen(temp[i])
 				- 1] == SINGLE_QUOTES) || ft_chrpos(temp[i], DOLLAR_SIGN) == -1)
+		{
 			ft_lstadd_back(&char_list, ft_lstnew(ft_strdup(temp[i])));
+			if (ft_lstsize(char_list) == 1)
+				aux = char_list;
+		}
 		else
 			iterate_and_replace(temp[i], &char_list);
 		args[i] = join_list(char_list);
@@ -107,6 +113,7 @@ char	**replace_env_var(char **temp)
 		i++;
 	}
 	args[i] = NULL;
+	char_list = aux;
 	ft_free_matrix(temp);
 	return (args);
 }

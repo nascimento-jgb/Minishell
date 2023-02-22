@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:37:13 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/22 09:39:34 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:56:46 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,6 @@ void	ft_strdel(char **str);
 void	ft_memdel(void **ptr);
 int		ft_words_count(char *s);
 int		ft_letter_count(char *s, char del);
+void	ft_lst_print(t_list *head);
+
 #endif

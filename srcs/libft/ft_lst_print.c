@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd_prompt.c                                       :+:      :+:    :+:   */
+/*   ft_lst_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/19 14:15:27 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 16:53:39 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/21 16:04:59 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/21 16:14:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "libft.h"
 
-void	pwd_prompt(void)
+void	ft_lst_print(t_list *head)
 {
-	char	*buffer;
-	char	*pwd;
+	int		count;
+	t_list	*tmp;
+	char	*num;
 
-	buffer = NULL;
-	pwd = getcwd(buffer, 0);
-	printf("%s\n", pwd);
-	free(pwd);
-	g_var.exit_code = 0;
+	if (!head)
+		return ;
+	count = 0;
+	tmp = head;
+	while (tmp)
+	{
+		num = ft_itoa(count);
+		write(1, num, ft_strlen(num));
+		write(1, ": ", 2);
+		write(1, tmp->content, ft_strlen(tmp->content));
+		ft_putchar('\n');
+		free(num);
+		count++;
+		tmp = tmp->next;
+	}
 }
