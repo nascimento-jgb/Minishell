@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:39:36 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 16:50:26 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:41:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,6 @@ void		change_input(char *file, int flags);
 
 //EXTRA
 int			ft_chrpos(char *s, int c);
-void		ft_free_ptr(void **ptr);
-void		ft_free_matrix(char **matrix);
 char		*ft_matrix_to_str(char **matrix);
 char		**ft_lst_to_matrix(t_list *lst);
 int			ft_chrqty(char *s, int c);

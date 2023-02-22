@@ -6,35 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 09:53:07 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 17:03:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:42:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-void	ft_free_ptr(void **ptr)
-{
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
-}
-
-void	ft_free_matrix(char **matrix)
-{
-	int	i;
-
-	if (!matrix)
-		return ;
-	i = 0;
-	while (matrix[i])
-	{
-		ft_free_ptr((void *)&matrix[i]);
-		i++;
-	}
-	ft_free_ptr((void *)&matrix);
-}
 
 int	ft_chrpos(char *s, int c)
 {
@@ -56,19 +32,6 @@ int	ft_chrpos(char *s, int c)
 	return (-1);
 }
 
-static void	conc_str(char **result, char *str)
-{
-	char	*temp;
-	char	*aux;
-
-	temp = ft_strjoin(" ", str);
-	aux = ft_strjoin(*result, temp);
-	free(*result);
-	*result = ft_strdup(aux);
-	free(temp);
-	free(aux);
-}
-
 char	*ft_matrix_to_str(char **matrix)
 {
 	int		i;
@@ -83,7 +46,7 @@ char	*ft_matrix_to_str(char **matrix)
 		if (i == 0)
 			result = ft_strdup(matrix[i]);
 		else
-			conc_str(&result, matrix[i]);
+			ft_conc_str(&result, matrix[i]);
 		i++;
 	}
 	temp = ft_strjoin(result, "");
