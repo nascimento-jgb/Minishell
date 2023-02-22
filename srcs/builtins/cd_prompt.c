@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:18:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:54:47 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:02:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,4 @@ void	cd_prompt(char **args)
 	ft_free_matrix(home);
 	ft_free_matrix(pwd);
 	ft_free_matrix(old_pwd);
-
 }

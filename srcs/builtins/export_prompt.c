@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_prompt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:53:02 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 15:04:02 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:06:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	update_var(char *var)
 	len = ft_chrpos(var, '=');
 	while (g_var.envp[i])
 	{
-		if (ft_memcmp(var, g_var.envp[i], len) == 0 && g_var.envp[i][len] == '=')
+		if (ft_memcmp(var, g_var.envp[i], len) == 0
+			&& g_var.envp[i][len] == '=')
 		{
 			free(g_var.envp[i]);
 			g_var.envp[i] = ft_strdup(var);
@@ -70,7 +71,8 @@ static int	already_env_var(char *var)
 	len = ft_chrpos(var, '=');
 	while (g_var.envp[i])
 	{
-		if (ft_memcmp(var, g_var.envp[i], len) == 0 && g_var.envp[i][len] == '=')
+		if (ft_memcmp(var, g_var.envp[i], len)
+			== 0 && g_var.envp[i][len] == '=')
 			return (TRUE);
 		i++;
 	}

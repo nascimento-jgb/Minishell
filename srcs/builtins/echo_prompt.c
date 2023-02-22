@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_prompt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 14:20:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 14:31:34 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:03:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ static int	get_flag(char **args)
 
 	if (g_var.args_num > 1 && args[1])
 	{
-		flag = ft_memcmp(args[1], "-n", ft_strlen(args[1])) + ft_memcmp(args[1], "-n", 2);
+		flag = ft_memcmp(args[1], "-n", ft_strlen(args[1]))
+			+ ft_memcmp(args[1], "-n", 2);
 		if (flag)
-			flag = ft_memcmp(args[1], "-n ", ft_strlen(args[1])) + ft_memcmp(args[1], "-n ", 2);
-		if (!flag && g_var.args_num > 2 && !(args[1][2] == SPACE_VALUE || args[2][0] == SPACE_VALUE))
+			flag = ft_memcmp(args[1], "-n ", ft_strlen(args[1]))
+				+ ft_memcmp(args[1], "-n ", 2);
+		if (!flag && g_var.args_num > 2 && !(args[1][2] == SPACE_VALUE
+			|| args[2][0] == SPACE_VALUE))
 			flag = TRUE;
 	}
 	else
