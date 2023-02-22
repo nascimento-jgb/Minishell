@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 09:43:16 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 16:36:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:10:14 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	pipe_checker(void)
 	int		i;
 
 	i = 0;
-	// printf("HEY9\n");
 	args = pipe_args();
 	save_history(args);
 	while (args[i] && !g_var.invalid_input)
@@ -67,7 +66,6 @@ void	pipe_checker(void)
 			new_pipe(FALSE);
 			g_var.close_code = TRUE;
 		}
-		// printf("HEY11\n");
 		execute_general(&args[i]);
 		change_fd(g_var.actual_fd);
 		if (args[++i] && args[i][0] == '|')
