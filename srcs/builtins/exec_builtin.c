@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:14:05 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 16:07:13 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:41:06 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	exec_builtin(char **args, int code)
 		unset_prompt(args);
 	if (code == 7)
 		cd_prompt(args);
+	ft_free_matrix(args);
 }

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:46:21 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 16:30:26 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:46:42 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	iterate_and_clean(char *temp, t_list **char_list)
 		}
 		else
 			i = populate_list(temp, char_list, i);
-		i += iterate_and_clean (temp + i, char_list);
+		i += iterate_and_clean(temp + i, char_list);
 	}
 	return (i);
 }

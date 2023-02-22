@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 11:28:49 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:47:26 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	execute_general(char **input)
 		else
 			exec_cmd(redirect_args(args));
 	}
-	ft_free_matrix(args);
 }
 
 static void	exec_args(void)

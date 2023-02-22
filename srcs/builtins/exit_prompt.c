@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 14:05:43 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 17:24:15 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:41:17 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	exit_prompt(void)
 	if (g_var.input)
 		free(g_var.input);
 	if (g_var.envp)
-		free(g_var.envp);
+		ft_free_matrix(g_var.envp);
 	if (g_var.prompt_line)
 		free(g_var.prompt_line);
 	rl_clear_history();

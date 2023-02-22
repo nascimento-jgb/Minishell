@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 16:27:43 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 10:02:49 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char	**replace_env_var(char **temp)
 		else
 			iterate_and_replace(temp[i], &char_list);
 		args[i] = join_list(char_list);
+		ft_lstclear(&char_list, free);
 		i++;
 	}
 	args[i] = NULL;
