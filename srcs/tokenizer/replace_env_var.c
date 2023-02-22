@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env_var.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 16:53:48 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:15:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,20 @@ static int	iterate_and_replace(char *str, t_list **char_list)
 	return (i);
 }
 
+static void ifstatement(char **temp, t_list *char_list, t_list *aux, int *i)
+{
+	if (((temp[*i][0] == SINGLE_QUOTES || (temp[*i][0] == SPACE_VALUE
+			&& temp[*i][1] == SINGLE_QUOTES)) && temp[*i][ft_strlen(temp[*i])
+			- 1] == SINGLE_QUOTES) || ft_chrpos(temp[*i], DOLLAR_SIGN) == -1)
+	{
+		ft_lstadd_back(&char_list, ft_lstnew(ft_strdup(temp[*i])));
+		if (ft_lstsize(char_list) == 1)
+			aux = char_list;
+	}
+	else
+		iterate_and_replace(temp[*i], &char_list);
+}
+
 char	**replace_env_var(char **temp)
 {
 	int		i;
@@ -92,22 +106,14 @@ char	**replace_env_var(char **temp)
 	t_list	*char_list;
 	t_list	*aux;
 
-	//char_list = NULL;
 	args = ft_calloc(g_var.args_num + 1, sizeof(char *));
 	i = 0;
+	aux = NULL;
 	while (i < g_var.args_num)
 	{
-		char_list = NULL; // check if there is presence of single quotes at the beggining/end without dollasign in the middle
-		if (((temp[i][0] == SINGLE_QUOTES || (temp[i][0] == SPACE_VALUE
-				&& temp[i][1] == SINGLE_QUOTES)) && temp[i][ft_strlen(temp[i])
-				- 1] == SINGLE_QUOTES) || ft_chrpos(temp[i], DOLLAR_SIGN) == -1)
-		{
-			ft_lstadd_back(&char_list, ft_lstnew(ft_strdup(temp[i])));
-			if (ft_lstsize(char_list) == 1)
-				aux = char_list;
-		}
-		else
-			iterate_and_replace(temp[i], &char_list);
+		char_list = NULL;
+
+		ifstatement(temp, char_list, aux, &i);
 		args[i] = join_list(char_list);
 		ft_lstclear(&char_list, free);
 		i++;

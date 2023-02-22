@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 15:46:15 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/21 16:23:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:10:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ char	*join_list(t_list *char_list)
 {
 	char	*save;
 	int		i;
+	t_list	*tmp;
 
-	t_list *tmp;
 	if (char_list)
 	{
 		save = ft_calloc(ft_strlen(char_list->content) + 1, sizeof(char));
