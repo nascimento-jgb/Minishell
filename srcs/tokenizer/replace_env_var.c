@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 16:53:48 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:14:08 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,11 @@ char	**replace_env_var(char **temp)
 	t_list	*char_list;
 	t_list	*aux;
 
-	//char_list = NULL;
 	args = ft_calloc(g_var.args_num + 1, sizeof(char *));
 	i = 0;
 	while (i < g_var.args_num)
 	{
-		char_list = NULL; // check if there is presence of single quotes at the beggining/end without dollasign in the middle
+		char_list = NULL;
 		if (((temp[i][0] == SINGLE_QUOTES || (temp[i][0] == SPACE_VALUE
 				&& temp[i][1] == SINGLE_QUOTES)) && temp[i][ft_strlen(temp[i])
 				- 1] == SINGLE_QUOTES) || ft_chrpos(temp[i], DOLLAR_SIGN) == -1)

@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 16:53:26 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:18:34 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,15 @@ void	run_prompt(char **envp)
 {
 	char	*aux;
 
-
 	g_var.envp = envp_dup(envp);
 	g_var.exit_code = 0;
 	initial_message();
 	while (TRUE)
 	{
-
 		init_gvar_data();
 		signal(SIGINT, new_prompt);
 		signal(SIGQUIT, SIG_IGN);
+		aux = readline(g_var.prompt_line);
 		if (is_valid_input(aux))
 		{
 			g_var.input = ft_strtrim(aux, " \t");
