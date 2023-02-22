@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:18:10 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/21 16:49:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:39:59 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	**replace_env_var(char **temp)
 		else
 			iterate_and_replace(temp[i], &char_list);
 		args[i] = join_list(char_list);
-		ft_lstdelone(char_list, free);
+		ft_lstclear(&char_list, free);
 		i++;
 	}
 	args[i] = NULL;
