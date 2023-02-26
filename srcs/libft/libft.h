@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:37:13 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/22 16:56:46 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:40:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ void	ft_memdel(void **ptr);
 int		ft_words_count(char *s);
 int		ft_letter_count(char *s, char del);
 void	ft_lst_print(t_list *head);
-
+void	ft_conc_str(char **result, char *str);
+void	ft_free_matrix(char **matrix);
+void	ft_free_ptr(void **ptr);
 #endif

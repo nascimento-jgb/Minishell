@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:39:36 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/25 14:35:09 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:20:59 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,6 @@ void		change_input(char *file, int flags);
 
 //EXTRA
 int			ft_chrpos(char *s, int c);
-void		ft_free_ptr(void **ptr);
-void		ft_free_matrix(char **matrix);
 char		*ft_matrix_to_str(char **matrix);
 char		**ft_lst_to_matrix(t_list *lst);
 int			ft_chrqty(char *s, int c);
