@@ -6,11 +6,24 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:22:09 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 17:09:21 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/25 14:36:56 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	redirect_error_msg(char **args)
+{
+	if (!g_var.error)
+	{
+		g_var.exit_code = 2;
+		g_var.invalid_input = TRUE;
+		ft_putendl_fd("Redirect: syntax error", STDERR_FILENO);
+		if (args)
+			ft_free_matrix(args);
+		exit_prompt();
+	}
+}
 
 static void	pipe_error_msg(t_list **lst)
 {
@@ -32,7 +45,7 @@ void	continue_add_pipe_arg(t_list **lst)
 	char	*aux;
 
 	input = readline("> ");
-	if (!input)
+	if (!input || !g_var.invalid_input)
 		pipe_error_msg(lst);
 	else
 	{

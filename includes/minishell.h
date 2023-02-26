@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:39:36 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 16:50:26 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/25 14:35:09 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void		check_eof(char *input);
 void		pipe_stop(int signal);
 void		here_doc_stop(int signal);
 void		continue_add_pipe_arg(t_list **lst);
+void		redirect_error_msg(char **args);
 void		new_prompt(int signal);
 void		quit_exec(int signal);
 void		new_line(int signal);

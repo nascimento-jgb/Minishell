@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:08:15 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 13:08:50 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:12:45 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	is_exit_cmd(void)
 	cmds = ft_split(g_var.input, ' ');
 	if (cmds)
 	{
-		if (ft_memcmp(cmds[0], "exit", ft_strlen(cmds[0])) == 0
-			&& ft_memcmp(cmds[0], "exit", 4) == 0)
+		if ((ft_memcmp(cmds[0], "exit", ft_strlen(cmds[0])) == 0
+				&& ft_memcmp(cmds[0], "exit", 4) == 0))
 			result = TRUE;
 	}
 	ft_free_matrix(cmds);
