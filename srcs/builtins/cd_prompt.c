@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:18:11 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/22 17:02:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:53:57 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ static void	exec_cd(char **args, char **home, char **pwd, char **old_pwd)
 {
 	char	*aux;
 
-	if (args[1][0] == '/')
+	if (args[1] == '\0')
+		try_chdir(args[0], pwd[0]);
+	else if (args[1][0] == '/')
 		try_chdir(args[1], pwd[0]);
 	else if (ft_memcmp(args[1], "-", ft_strlen(args[1])) == 0
 		&& ft_memcmp(args[1], "-", 1) == 0)
@@ -107,15 +109,20 @@ void	cd_prompt(char **args)
 	char	**pwd;
 	char	**old_pwd;
 
+	printf("%d\n", g_var.args_num);
+	printf("%s\n", args[0]);
 	if (g_var.args_num > 2)
 	{
-		printf("cd: too many arguments\n");
+		printf("cd: Syntax error\n");
 		g_var.error++;
 		g_var.exit_code = TRUE;
 	}
 	pwd = replace_env_var(tokenizer("$PWD"));
+	printf("%s\n", *pwd);
 	old_pwd = replace_env_var(tokenizer("$OLDPWD"));
+	printf("%s\n", *old_pwd);
 	home = replace_env_var(tokenizer("$HOME"));
+	printf("%s\n", *home);
 	exec_cd(args, home, pwd, old_pwd);
 	ft_free_matrix(home);
 	ft_free_matrix(pwd);
