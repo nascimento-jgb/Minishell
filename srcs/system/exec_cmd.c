@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 14:18:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/20 16:48:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 09:38:34 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,12 @@ void	exec_cmd(char **args)
 	if (path)
 	{
 		free(path);
-		if (!try_exec(args))
+		if (args[0][0] == '/' && !args[0][1])
+		{
+			ft_putstr_fd("permission denied: ", STDERR_FILENO);
+			ft_putendl_fd(args[0], STDERR_FILENO);
+		}
+		else if (!try_exec(args))
 		{
 			ft_putstr_fd("Error -> Command not found: ", STDERR_FILENO);
 			ft_putendl_fd(args[0], STDERR_FILENO);

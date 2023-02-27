@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:46:13 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 16:41:19 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/27 08:40:52 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	redirect(char **input)
 	args = redirect_args(replace_env_var(tokenizer(*input)));
 	if (!is_valid_redirection(args))
 	{
+		printf("HEY\n");
 		g_var.error = TRUE;
 		ft_putendl_fd("Redirect: syntax error", STDERR_FILENO);
 	}
