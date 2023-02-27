@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/26 08:51:57 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:39:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@ static int	is_valid_input(char *input)
 	if (is_all_blank(input))
 		return (FALSE);
 	aux = ft_strtrim(input, " \t");
+	if (!aux)
+		return (FALSE);
 	temp = clean_quotes(tokenizer(aux));
+	if (!temp)
+		return (FALSE);
 	if (!temp[1] && is_all_dollar(temp[0]))
 		flag = TRUE;
 	free(aux);
