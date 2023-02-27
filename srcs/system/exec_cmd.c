@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 14:18:23 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/27 11:35:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:09:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	try_exec(char **args)
 	}
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
-		g_var.exit_code = WIFEXITED(status);
+		g_var.exit_code = WEXITSTATUS(status);
 	if (g_var.exit_code == -1)
 		return (FALSE);
 	return (TRUE);
