@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/27 15:39:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:16:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	execute_general(char **input)
 		if (code)
 			exec_builtin(args, code);
 		else
-			exec_cmd(redirect_args(args));
+			exec_cmd(redirect_args((replace_env_var(tokenizer(*input)))));
 	}
 }
 

@@ -1,5 +1,5 @@
 NAME = minishell
-CC = gcc
+CC = cc
 CFLAGS = -Werror -Wall -Wextra
 COMFILE_FLAGS = -lreadline -L${HOME}/.brew/opt/readline/lib
 OBJ_FLAGS = -I${HOME}/.brew/opt/readline/include
