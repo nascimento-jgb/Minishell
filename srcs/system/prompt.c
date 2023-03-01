@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:00 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/27 09:38:52 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:03:36 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	execute_general(char **input)
 		if (code)
 			exec_builtin(args, code);
 		else
-			exec_cmd(redirect_args(args));
+			exec_cmd(redirect_args(clean_quotes
+					(replace_env_var(tokenizer(*input)))));
 	}
 }
 

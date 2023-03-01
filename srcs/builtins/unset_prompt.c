@@ -6,7 +6,7 @@
 /*   By: jonascim <jonascim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:04:05 by jonascim          #+#    #+#             */
-/*   Updated: 2023/02/19 16:05:20 by jonascim         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:17:10 by jonascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static char	**copy_and_clear_env(char *var, int i)
 	len = ft_strlen(var);
 	while (g_var.envp[i])
 	{
-		if (ft_memcmp(var, g_var.envp[i], len) == 0 && g_var.envp[i][len] == '=')
+		if (ft_memcmp(var, g_var.envp[i], len) == 0
+			&& g_var.envp[i][len] == '=')
 			j--;
 		else
 			aux[j] = ft_strdup(g_var.envp[i]);
@@ -67,7 +68,8 @@ static int	is_valid_unset(char *var)
 		error = FALSE;
 	while (var[i] && error)
 	{
-		if (!(ft_isalpha(var[i]) || ft_isdigit(var[i])) || is_all_digit(var, ft_strlen(var)))
+		if (!(ft_isalpha(var[i]) || ft_isdigit(var[i]))
+			|| is_all_digit(var, ft_strlen(var)))
 			error = FALSE;
 		i++;
 	}
